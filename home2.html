@@ -30,6 +30,14 @@
       z-index: 2;
       text-align: center;
       max-width: 900px;
+      margin: 0 auto;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      animation: reveal 1s 0.4s forwards;
+      opacity: 0;
     }
     .hero-title {
       font-size: clamp(3rem, 7vw, 6rem);
@@ -162,11 +170,14 @@
   </header>
 
   <!-- 1. Premium Hero -->
-  <section class="hero-parallax" style="background-image: url('assets/images/hopme2-hero.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+  <section class="hero-parallax" style="background-image: url('assets/images/home2-hero.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
     <div class="hero-content">
       <h1 class="hero-title">Beyond <span>Limits</span></h1>
       <p class="hero-subtitle">Embrace the raw power and technological mastery of the future of racing.</p>
-      <a href="services.html" class="btn btn-primary" style="opacity: 0; animation: reveal 1s 0.4s forwards;">Explore Technology</a>
+      <div class="hero-buttons">
+        <a href="services.html" class="btn btn-primary">Explore Technology</a>
+        <a href="about.html" class="btn btn-secondary">Our Legacy</a>
+      </div>
     </div>
   </section>
 
