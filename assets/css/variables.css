@@ -1,0 +1,62 @@
+/* variables.css */
+:root {
+  /* Core Colors - Default is Dark Mode */
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #121212;
+  --bg-tertiary: #1a1a1a;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+  
+  --brand-orange: #ff4500;
+  --brand-orange-glow: rgba(255, 69, 0, 0.5);
+  --brand-orange-hover: #ff5722;
+  
+  --accent-grey: #2a2a2a;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --glass-bg: rgba(20, 20, 20, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.05);
+
+  /* Typography */
+  --font-primary: 'Inter', 'Roboto', sans-serif;
+  --font-heading: 'Outfit', 'Inter', sans-serif;
+  
+  /* Layout */
+  --container-width: 1440px;
+  --container-padding: 2rem;
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Z-Index */
+  --z-nav: 1000;
+  --z-dropdown: 1010;
+  --z-cursor: 9999;
+  --z-modal: 1050;
+}
+
+[data-theme="light"] {
+  --bg-primary: #f0f0f0;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #e5e5e5;
+  --text-primary: #121212;
+  --text-secondary: #4a4a4a;
+  
+  --brand-orange: #e63e00;
+  --brand-orange-glow: rgba(230, 62, 0, 0.3);
+  --brand-orange-hover: #ff4500;
+  
+  --accent-grey: #d0d0d0;
+  --border-color: rgba(0, 0, 0, 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(0, 0, 0, 0.05);
+}
+
+[dir="rtl"] {
+  --nav-direction: row-reverse;
+  --margin-start: margin-right;
+  --margin-end: margin-left;
+  --padding-start: padding-right;
+  --padding-end: padding-left;
+}

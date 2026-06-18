@@ -1,0 +1,82 @@
+/* animations.css */
+
+/* Track Movement */
+@keyframes trackMove {
+  from { background-position: 0 0; }
+  to { background-position: 100% 100%; }
+}
+
+/* Wheel Spin */
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+/* Floating Elements */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Speed Lines */
+@keyframes speedLine {
+  0% { transform: translateX(-100%) scaleX(1); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateX(200vw) scaleX(2); opacity: 0; }
+}
+
+.speed-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.speed-line {
+  position: absolute;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--brand-orange), transparent);
+  animation: speedLine 2s linear infinite;
+}
+
+/* Scroll Revel */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Blur transitions */
+.motion-blur-in {
+  animation: motionBlurIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes motionBlurIn {
+  0% { filter: blur(20px); opacity: 0; transform: scale(1.1); }
+  100% { filter: blur(0); opacity: 1; transform: scale(1); }
+}
+
+/* Continuous track movement effect for backgrounds */
+.track-bg {
+  background-size: 200% 200%;
+  animation: trackMove 10s linear infinite;
+}
+
+/* Cinematic Camera Zoom */
+@keyframes cinematicZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+
+.cinematic-zoom {
+  animation: cinematicZoom 20s infinite alternate linear;
+}

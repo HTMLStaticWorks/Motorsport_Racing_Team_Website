@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Premium Motorsport Racing Team</title>
+  <meta name="description" content="Login to the exclusive Premium Motorsport Racing Team portal.">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <style>
+    /* Specific styles for Auth Pages */
+    .auth-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: url('https://images.unsplash.com/photo-1541443131876-44b0322278fd?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+      position: relative;
+    }
+    .auth-page::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(10, 10, 10, 0.85); /* Dark overlay */
+    }
+    .auth-container {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 500px;
+      padding: 3rem;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--brand-orange);
+      border-radius: 16px;
+      box-shadow: 0 0 30px var(--brand-orange-glow);
+      animation: motionBlurIn 1s ease-out;
+      margin: 2rem;
+    }
+    .auth-logo {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      color: var(--brand-orange);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .social-logins {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .btn-social {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 4px;
+      transition: var(--transition-fast);
+      font-family: var(--font-primary);
+      cursor: none !important;
+    }
+    .btn-social:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--brand-orange);
+    }
+    .divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .divider:not(:empty)::before { margin-right: .25em; }
+    .divider:not(:empty)::after { margin-left: .25em; }
+    
+    .auth-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      font-size: 0.9rem;
+    }
+    .btn-submit {
+      width: 100%;
+    }
+    .auth-footer {
+      margin-top: 2rem;
+      text-align: center;
+      color: var(--text-secondary);
+    }
+    .auth-footer a {
+      color: var(--brand-orange);
+      transition: var(--transition-fast);
+    }
+    .auth-footer a:hover {
+      text-shadow: 0 0 8px var(--brand-orange-glow);
+    }
+    .password-wrapper { position: relative; }
+    .toggle-password {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+      cursor: none !important;
+    }
+    [dir="rtl"] .toggle-password {
+      right: auto;
+      left: 15px;
+    }
+    .toggles {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 15px;
+      z-index: 20;
+    }
+    [dir="rtl"] .toggles {
+      right: auto;
+      left: 20px;
+    }
+    .toggle-btn {
+      background: var(--glass-bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-fast);
+      cursor: none !important;
+    }
+    .toggle-btn:hover {
+      border-color: var(--brand-orange);
+      box-shadow: 0 0 10px var(--brand-orange-glow);
+    }
+  </style>
+</head>
+<body>
+  <div class="toggles">
+    <button class="toggle-btn theme-toggle" title="Toggle Theme">🌓</button>
+    <button class="toggle-btn rtl-toggle" title="Toggle RTL">⇄</button>
+  </div>
+
+  <main class="auth-page">
+    <div class="speed-lines"></div>
+    <div class="auth-container glass-card">
+      <h1 class="auth-logo"><a href="index.html" style="color: inherit; text-decoration: none; display: flex; align-items: center; justify-content: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--brand-orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; vertical-align: text-bottom;">
+          <path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a2 2 0 0 0-1.6-.8H9.3a2 2 0 0 0-1.6.8L5 11l-5.16.86a1 1 0 0 0-.84.99V16h3m14 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM7 16a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path>
+        </svg>RACING TEAM</a></h1>
+      
+      <div class="social-logins">
+        <button class="btn-social">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z"/></svg>
+          Google Login
+        </button>
+        <button class="btn-social">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.08.45-2.1.58-3.01-.36-4.11-4.04-4.83-11.51-1.04-14.77 1.44-1.25 3.06-1.55 4.31-1.55 1.25 0 2.45.54 3.48 1.11.83.47 1.48.86 2.44.86 1.05 0 1.8-.46 2.8-1.05 1.15-.67 2.62-1.37 4.26-1.11 1.06.17 2.76.71 3.99 2.5-.2.13-2.45 1.48-2.39 4.32.07 3.32 2.87 4.41 3.01 4.47-.02.06-.47 1.63-1.61 3.29-1.01 1.48-2.11 3.01-3.93 2.93zm-3.35-18.06c-.66.82-1.63 1.34-2.67 1.27-.13-1.09.35-2.14 1.06-2.92.65-.75 1.63-1.35 2.68-1.29.13 1.13-.37 2.16-1.07 2.94z"/></svg>
+          Apple Login
+        </button>
+        <button class="btn-social">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg>
+          Discord Login
+        </button>
+      </div>
+
+      <div class="divider">OR</div>
+
+      <form action="index.html" method="GET">
+        <div class="form-group">
+          <input type="email" class="form-control" placeholder="Email Address" required>
+        </div>
+        <div class="form-group password-wrapper">
+          <input type="password" class="form-control" id="password" placeholder="Password" required>
+          <button type="button" class="toggle-password" onclick="const p=document.getElementById('password'); p.type=p.type==='password'?'text':'password';">👁</button>
+        </div>
+        
+        <div class="auth-actions">
+          <label style="display:flex; align-items:center; gap:8px;">
+            <input type="checkbox"> Remember Me
+          </label>
+          <a href="#" style="color:var(--brand-orange);">Forgot Password?</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-submit">ENTER PADDOCK</button>
+      </form>
+
+      <div class="auth-footer">
+        Don't have an account? <a href="register.html">Register Now</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+</body>
+</html>

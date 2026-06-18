@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Premium Motorsport Racing Team</title>
+  <meta name="description" content="Learn about our racing history, leadership team, and future goals.">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <style>
+    .page-hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: url('https://images.unsplash.com/photo-1518118014377-ce921b660a5e?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+    }
+    .page-hero::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.8), rgba(10,10,10,1));
+    }
+    .page-hero-content {
+      position: relative; z-index: 2; text-align: center;
+    }
+    .page-hero-title {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 1rem;
+      animation: reveal 1s forwards;
+    }
+    /* Reusing Header and Footer from previous pages */
+    .main-header {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: var(--z-nav);
+      background: rgba(10, 10, 10, 0.4); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--glass-border); transition: all var(--transition-normal); padding: 1.5rem 0;
+    }
+    .main-header.scrolled { padding: 0.8rem 0; background: rgba(10, 10, 10, 0.9); box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: var(--container-width); margin: 0 auto; padding: 0 var(--container-padding); }
+    .logo { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--brand-orange); letter-spacing: 2px; text-transform: uppercase; }
+    .nav-menu { display: flex; gap: 1rem; align-items: center; }
+    .nav-link { font-family: var(--font-heading); font-size: 0.95rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; position: relative; padding: 0.5rem 0; transition: var(--transition-fast); cursor: none !important; }
+    .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0%; height: 2px; background: var(--brand-orange); transition: width var(--transition-normal); box-shadow: 0 0 8px var(--brand-orange-glow); }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+    .nav-link:hover { color: var(--brand-orange); }
+    .nav-actions { display: flex; gap: 1rem; align-items: center; }
+    .toggles-nav { display: flex; gap: 0.5rem; }
+    .toggle-btn { background: transparent; border: 1px solid var(--border-color); color: var(--text-primary); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition-fast); cursor: none !important; }
+    .toggle-btn:hover { border-color: var(--brand-orange); box-shadow: 0 0 10px var(--brand-orange-glow); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: none !important; }
+    .hamburger span { width: 25px; height: 2px; background: var(--text-primary); transition: var(--transition-fast); }
+    @media (max-width: 1024px) {
+      .nav-menu { position: fixed; top: 0; right: -100%; width: 300px; height: 100vh; background: var(--bg-primary); flex-direction: column; justify-content: center; transition: right var(--transition-normal); border-left: 1px solid var(--border-color); }
+      [dir="rtl"] .nav-menu { right: auto; left: -100%; border-left: none; border-right: 1px solid var(--border-color); }
+      .nav-menu.active { right: 0; }
+      [dir="rtl"] .nav-menu.active { left: 0; }
+      .hamburger { display: flex; z-index: var(--z-dropdown); }
+      .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+      .hamburger.active span:nth-child(2) { opacity: 0; }
+      .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+      .nav-actions { display: none; }
+    }
+    
+    .main-footer { background: var(--bg-secondary); padding: 5rem 0 2rem; position: relative; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 2fr; gap: 3rem; margin-bottom: 3rem; }
+    .footer-col h4 { color: var(--brand-orange); margin-bottom: 1.5rem; font-size: 1.2rem; text-transform: uppercase; }
+    .footer-links li { margin-bottom: 0.8rem; }
+    .footer-links a { color: var(--text-secondary); transition: var(--transition-fast); }
+    .footer-links a:hover { color: var(--brand-orange); padding-left: 5px; }
+    [dir="rtl"] .footer-links a:hover { padding-left: 0; padding-right: 5px; }
+    .social-icons { display: flex; gap: 1rem; margin-top: 1.5rem; }
+    .social-icon { width: 40px; height: 40px; background: var(--glass-bg); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: var(--transition-fast); }
+    .social-icon:hover { border-color: var(--brand-orange); background: var(--brand-orange-glow); transform: translateY(-3px); }
+    .footer-bottom { border-top: 1px solid var(--border-color); padding-top: 2rem; text-align: center; color: var(--text-secondary); font-size: 0.9rem; }
+    @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <header class="main-header">
+    <div class="nav-container">
+      <a href="index.html" class="logo" style="display: flex; align-items: center; white-space: nowrap; margin-right: 1.5rem;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--brand-orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; vertical-align: text-bottom;">
+          <path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a2 2 0 0 0-1.6-.8H9.3a2 2 0 0 0-1.6.8L5 11l-5.16.86a1 1 0 0 0-.84.99V16h3m14 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM7 16a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path>
+        </svg>
+        RACING TEAM
+      </a>
+            <nav class="nav-menu" id="nav-menu">
+        <div class="nav-item-dropdown" style="position: relative; display: inline-block;">
+          <a href="#" class="nav-link active" style="display: flex; align-items: center;">Home <span style="font-size: 0.7em; margin-left: 5px;">&#9660;</span></a>
+          <div class="dropdown-content" style="display: none; position: absolute; background: rgba(10, 10, 10, 0.9); min-width: 150px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.8); z-index: 1; border-radius: 4px; border: 1px solid var(--border-color); top: 100%; left: 0; flex-direction: column;">
+            <a href="index.html" style="color: var(--text-primary); padding: 12px 16px; text-decoration: none; font-family: var(--font-heading); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s;">Home 1</a>
+            <a href="home2.html" style="color: var(--text-primary); padding: 12px 16px; text-decoration: none; font-family: var(--font-heading); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s;">Home 2</a>
+          </div>
+        </div>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="drivers.html" class="nav-link">Drivers</a>
+        <a href="calendar.html" class="nav-link">Race Calendar</a>
+        <a href="results.html" class="nav-link">Results</a>
+        <a href="merchandise.html" class="nav-link">Merchandise</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      <style>
+        .nav-item-dropdown:hover .dropdown-content { display: flex !important; }
+        .dropdown-content a:hover { color: var(--brand-orange) !important; }
+        .nav-menu { display: flex; align-items: center; white-space: nowrap; margin-right: 2.5rem; }
+      </style>
+      <div class="nav-actions">
+        <div class="toggles-nav">
+          <button class="toggle-btn theme-toggle" title="Toggle Theme">🌓</button>
+          <button class="toggle-btn rtl-toggle" title="Toggle RTL">⇄</button>
+        </div>
+        <a href="register.html" class="btn btn-primary" style="height: 40px; padding: 0 1rem; font-size: 0.8rem; white-space: nowrap;">Join The Team</a>
+        <a href="sponsors.html" class="btn btn-secondary" style="height: 40px; padding: 0 1rem; font-size: 0.8rem; white-space: nowrap;">Become Sponsor</a>
+      </div>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- 1. About Hero -->
+  <section class="page-hero" style="background-image: url('assets/images/about-hero.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <div class="speed-lines"></div>
+    <div class="page-hero-content">
+      <h1 class="page-hero-title">Our Legacy</h1>
+      <p style="color: var(--brand-orange); letter-spacing: 2px; text-transform: uppercase;">Forged in Speed. Defined by Victory.</p>
+    </div>
+  </section>
+
+  <!-- 2. Team History -->
+  <section class="reveal">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 1rem;">Team History</h2>
+      <p style="text-align: center; max-width: 600px; margin: 0 auto;">Decades of breaking limits and redefining what is possible on the track.</p>
+      
+      <div class="grid-4">
+        <div class="glass-card">
+          <img src="https://images.unsplash.com/photo-1518118014377-ce921b660a5e?q=80&w=600&auto=format&fit=crop" alt="Foundation">
+          <h3>The Foundation</h3>
+          <p>Established in 1985 by visionary engineers with a passion for speed.</p>
+        </div>
+        <div class="glass-card">
+          <img src="https://images.unsplash.com/photo-1541443131876-44b0322278fd?q=80&w=600&auto=format&fit=crop" alt="First Title">
+          <h3>The First Title</h3>
+          <p>Secured our maiden world championship against legendary rivals.</p>
+        </div>
+        <div class="glass-card">
+          <img src="https://images.unsplash.com/photo-1629844837424-d2e3077759a2?q=80&w=600&auto=format&fit=crop" alt="Innovation Era">
+          <h3>Innovation Era</h3>
+          <p>Introduced active suspension and semi-automatic gearboxes.</p>
+        </div>
+        <div class="glass-card">
+          <img src="https://images.unsplash.com/photo-1533158307587-828f0a76cf46?q=80&w=600&auto=format&fit=crop" alt="Modern Dominance">
+          <h3>Modern Dominance</h3>
+          <p>Consecutive hybrid-era championships solidifying our dynasty.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Mission & Vision -->
+  <section class="reveal" style="background: var(--bg-secondary);">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 1rem;">Mission & Vision</h2>
+      <p style="text-align: center; max-width: 600px; margin: 0 auto;">Our driving philosophy beyond the checkered flag.</p>
+      
+      <div class="grid-4">
+        <div class="glass-card">
+          <div style="font-size: 2.5rem; color: var(--brand-orange); margin-bottom: 1rem;">🎯</div>
+          <h3>Performance</h3>
+          <p>Relentless pursuit of speed, reliability, and race-day perfection.</p>
+        </div>
+        <div class="glass-card">
+          <div style="font-size: 2.5rem; color: var(--brand-orange); margin-bottom: 1rem;">🌍</div>
+          <h3>Sustainability</h3>
+          <p>Pioneering carbon-neutral racing and advanced hybrid bio-fuels.</p>
+        </div>
+        <div class="glass-card">
+          <div style="font-size: 2.5rem; color: var(--brand-orange); margin-bottom: 1rem;">💡</div>
+          <h3>Innovation</h3>
+          <p>Developing track technologies that shape the future of road cars.</p>
+        </div>
+        <div class="glass-card">
+          <div style="font-size: 2.5rem; color: var(--brand-orange); margin-bottom: 1rem;">🤝</div>
+          <h3>Inclusion</h3>
+          <p>Fostering diversity in engineering and global driver academies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Leadership Team -->
+  <section class="reveal">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 1rem;">Leadership Team</h2>
+      <p style="text-align: center; max-width: 600px; margin: 0 auto;">The tactical minds orchestrating our championship campaigns.</p>
+      
+      <div class="grid-4">
+        <div class="glass-card" style="text-align: center;">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop" alt="Principal" style="aspect-ratio: 1/1; border-radius: 50%;">
+          <h3>Jonathan Vance</h3>
+          <p style="color: var(--brand-orange);">Team Principal</p>
+        </div>
+        <div class="glass-card" style="text-align: center;">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop" alt="Tech Director" style="aspect-ratio: 1/1; border-radius: 50%;">
+          <h3>Dr. Elena Reed</h3>
+          <p style="color: var(--brand-orange);">Technical Director</p>
+        </div>
+        <div class="glass-card" style="text-align: center;">
+          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=600&auto=format&fit=crop" alt="Strategy Head" style="aspect-ratio: 1/1; border-radius: 50%;">
+          <h3>Marcus Chen</h3>
+          <p style="color: var(--brand-orange);">Head of Strategy</p>
+        </div>
+        <div class="glass-card" style="text-align: center;">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=600&auto=format&fit=crop" alt="Aero Chief" style="aspect-ratio: 1/1; border-radius: 50%;">
+          <h3>Sarah Dubois</h3>
+          <p style="color: var(--brand-orange);">Chief Aerodynamicist</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Achievements -->
+  <section class="reveal" style="background: var(--bg-secondary);">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 1rem;">Achievements</h2>
+      <p style="text-align: center; max-width: 600px; margin: 0 auto;">By the numbers: A legacy of pure performance.</p>
+      
+      <div class="grid-4">
+        <div class="glass-card" style="text-align: center; border-color: var(--brand-orange);">
+          <div style="font-size: 4rem; color: var(--text-primary); font-family: var(--font-heading); font-weight: 700;">12</div>
+          <h3 style="color: var(--brand-orange);">Constructor Titles</h3>
+        </div>
+        <div class="glass-card" style="text-align: center;">
+          <div style="font-size: 4rem; color: var(--text-primary); font-family: var(--font-heading); font-weight: 700;">15</div>
+          <h3 style="color: var(--brand-orange);">Driver Titles</h3>
+        </div>
+        <div class="glass-card" style="text-align: center;">
+          <div style="font-size: 4rem; color: var(--text-primary); font-family: var(--font-heading); font-weight: 700;">180+</div>
+          <h3 style="color: var(--brand-orange);">Race Victories</h3>
+        </div>
+        <div class="glass-card" style="text-align: center;">
+          <div style="font-size: 4rem; color: var(--text-primary); font-family: var(--font-heading); font-weight: 700;">250</div>
+          <h3 style="color: var(--brand-orange);">Pole Positions</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Future Goals CTA -->
+  <section class="reveal neon-border-top" style="background: url('https://images.unsplash.com/photo-1542385151-efd9000785a0?q=80&w=2000&auto=format&fit=crop') center/cover; position: relative;">
+    <div style="position: absolute; top:0; left:0; width:100%; height:100%; background:rgba(10,10,10,0.85);"></div>
+    <div class="container" style="position: relative; z-index: 2; text-align: center;">
+      <h2>The Future is Fast</h2>
+      <p style="max-width: 600px; margin: 0 auto 2rem; color: #ccc;">We are building the next generation of racing machines and developing the stars of tomorrow. Be part of our ongoing legacy.</p>
+      <a href="services.html" class="btn btn-primary">Discover Our Tech</a>
+    </div>
+  </section>
+
+  <footer class="main-footer neon-border-top">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 style="font-size: 1.5rem; letter-spacing: 2px; display: flex; align-items: center; margin-bottom: 1rem;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--brand-orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; vertical-align: text-bottom;">
+          <path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a2 2 0 0 0-1.6-.8H9.3a2 2 0 0 0-1.6.8L5 11l-5.16.86a1 1 0 0 0-.84.99V16h3m14 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM7 16a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path>
+        </svg>
+            RACING TEAM
+          </h4>
+          <p style="font-size: 0.9rem; color: var(--text-secondary);">Pushing the boundaries of motorsport engineering and elite performance. Join our championship journey.</p>
+          <div class="social-icons">
+            <a href="#" class="social-icon" aria-label="Facebook">FB</a>
+            <a href="#" class="social-icon" aria-label="Twitter">X</a>
+            <a href="#" class="social-icon" aria-label="Instagram">IG</a>
+            <a href="#" class="social-icon" aria-label="YouTube">YT</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Team</a></li>
+            <li><a href="drivers.html">Our Drivers</a></li>
+            <li><a href="calendar.html">Race Calendar</a></li>
+            <li><a href="results.html">Latest Results</a></li>
+            <li><a href="merchandise.html">Shop Merch</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Categories</h4>
+          <ul class="footer-links">
+            <li><a href="#">Formula Racing</a></li>
+            <li><a href="#">GT Endurance</a></li>
+            <li><a href="#">Esports Team</a></li>
+            <li><a href="#">Junior Academy</a></li>
+            <li><a href="#">Technology</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Info</h4>
+          <ul class="footer-links" style="color: var(--text-secondary); font-size: 0.9rem;">
+            <li style="margin-bottom: 1rem;">100 Racing Blvd, Silverstone, UK</li>
+            <li style="margin-bottom: 1rem;">contact@racingteam.com</li>
+            <li style="margin-bottom: 1rem;">+44 20 7946 0958</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Newsletter</h4>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">Subscribe for paddock updates.</p>
+          <form style="display: flex; flex-direction: column; gap: 10px;">
+            <input type="email" class="form-control" placeholder="Email Address" required>
+            <button type="submit" class="btn btn-secondary" style="height: 40px; font-size: 0.8rem;">Sign Up</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Premium Motorsport Racing Team. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/animations.js"></script>
+</body>
+</html>

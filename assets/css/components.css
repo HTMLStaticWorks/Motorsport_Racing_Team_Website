@@ -1,0 +1,139 @@
+/* components.css */
+
+/* Primary Buttons: Orange gradient, Racing glow effect, Speed-line hover animation */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  transition: var(--transition-normal);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  height: 50px; /* Same height */
+  cursor: none !important; /* using custom cursor */
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, var(--brand-orange), #ff6b00);
+  color: #fff;
+  box-shadow: 0 0 15px var(--brand-orange-glow);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: left 0.5s;
+  transform: skewX(-20deg);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 25px var(--brand-orange);
+  transform: translateY(-2px);
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+/* Secondary Buttons: Transparent, Orange outline, Glassmorphism effect */
+.btn-secondary {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--brand-orange);
+  color: var(--brand-orange);
+}
+
+.btn-secondary:hover {
+  background: var(--brand-orange-glow);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Grid Layouts - strictly 4 cards */
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+@media (max-width: 1024px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .grid-4 { grid-template-columns: 1fr; }
+}
+
+/* Glassmorphism Cards */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Consistent card heights */
+  transform-style: preserve-3d;
+}
+
+.glass-card:hover {
+  transform: translateY(-10px) rotateX(5deg) rotateY(-5deg); /* 3D depth effect */
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px var(--brand-orange-glow);
+  border-color: var(--brand-orange-glow);
+}
+
+.glass-card img {
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  object-fit: cover;
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+
+/* Glowing Neon Top Border for Footer/Sections */
+.neon-border-top {
+  border-top: 2px solid var(--brand-orange);
+  box-shadow: inset 0 1px 15px var(--brand-orange-glow);
+}
+
+/* Forms */
+.form-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.form-control {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+  transition: var(--transition-fast);
+  outline: none;
+}
+
+.form-control:focus {
+  border-color: var(--brand-orange);
+  box-shadow: 0 0 10px var(--brand-orange-glow);
+  background: rgba(0, 0, 0, 0.7);
+}
