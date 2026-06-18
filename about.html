@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="dark" dir="ltr">
 <head>
   <meta charset="UTF-8">
@@ -91,13 +91,13 @@
       </a>
             <nav class="nav-menu" id="nav-menu">
         <div class="nav-item-dropdown" style="position: relative; display: inline-block;">
-          <a href="#" class="nav-link active" style="display: flex; align-items: center;">Home <span style="font-size: 0.7em; margin-left: 5px;">&#9660;</span></a>
+          <a href="#" class="nav-link" style="display: flex; align-items: center;">Home <span style="font-size: 0.7em; margin-left: 5px;">&#9660;</span></a>
           <div class="dropdown-content" style="display: none; position: absolute; background: rgba(10, 10, 10, 0.9); min-width: 150px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.8); z-index: 1; border-radius: 4px; border: 1px solid var(--border-color); top: 100%; left: 0; flex-direction: column;">
             <a href="index.html" style="color: var(--text-primary); padding: 12px 16px; text-decoration: none; font-family: var(--font-heading); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s;">Home 1</a>
             <a href="home2.html" style="color: var(--text-primary); padding: 12px 16px; text-decoration: none; font-family: var(--font-heading); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s;">Home 2</a>
           </div>
         </div>
-        <a href="about.html" class="nav-link">About</a>
+        <a href="about.html" class="nav-link active">About</a>
         <a href="services.html" class="nav-link">Services</a>
         <a href="drivers.html" class="nav-link">Drivers</a>
         <a href="calendar.html" class="nav-link">Race Calendar</a>
@@ -137,26 +137,74 @@
       <h2 style="text-align: center; margin-bottom: 1rem;">Team History</h2>
       <p style="text-align: center; max-width: 600px; margin: 0 auto;">Decades of breaking limits and redefining what is possible on the track.</p>
       
-      <div class="grid-4">
-        <div class="glass-card">
-          <img src="https://images.unsplash.com/photo-1518118014377-ce921b660a5e?q=80&w=600&auto=format&fit=crop" alt="Foundation">
-          <h3>The Foundation</h3>
-          <p>Established in 1985 by visionary engineers with a passion for speed.</p>
-        </div>
-        <div class="glass-card">
-          <img src="https://images.unsplash.com/photo-1541443131876-44b0322278fd?q=80&w=600&auto=format&fit=crop" alt="First Title">
-          <h3>The First Title</h3>
-          <p>Secured our maiden world championship against legendary rivals.</p>
-        </div>
-        <div class="glass-card">
-          <img src="https://images.unsplash.com/photo-1629844837424-d2e3077759a2?q=80&w=600&auto=format&fit=crop" alt="Innovation Era">
-          <h3>Innovation Era</h3>
-          <p>Introduced active suspension and semi-automatic gearboxes.</p>
-        </div>
-        <div class="glass-card">
-          <img src="https://images.unsplash.com/photo-1533158307587-828f0a76cf46?q=80&w=600&auto=format&fit=crop" alt="Modern Dominance">
-          <h3>Modern Dominance</h3>
-          <p>Consecutive hybrid-era championships solidifying our dynasty.</p>
+      <style>
+        .staircase-wrapper { perspective: 2000px; padding: 4rem 0; overflow: visible; }
+        .staircase-container { display: flex; justify-content: center; align-items: flex-end; gap: 2rem; height: 450px; transform-style: preserve-3d; transform: rotateX(10deg) rotateY(-15deg); transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .staircase-wrapper:hover .staircase-container { transform: rotateX(0deg) rotateY(0deg); }
+        
+        .stair-step { position: relative; width: 260px; background: rgba(20, 20, 20, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); border-top: 1px solid rgba(255, 255, 255, 0.2); border-bottom: 8px solid rgba(255, 107, 0, 0.2); border-radius: 16px; padding: 2.5rem 2rem; transform-style: preserve-3d; transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: -15px 15px 30px rgba(0,0,0,0.6); cursor: none !important; display: flex; flex-direction: column; justify-content: flex-start; }
+        
+        .stair-step:nth-child(1) { height: 260px; transform: translateZ(-60px); }
+        .stair-step:nth-child(2) { height: 320px; transform: translateZ(-20px); }
+        .stair-step:nth-child(3) { height: 380px; transform: translateZ(20px); }
+        .stair-step:nth-child(4) { height: 440px; transform: translateZ(60px); }
+        
+        .stair-step:hover { border-bottom: 8px solid var(--brand-orange); background: rgba(35, 35, 35, 0.85); box-shadow: 0 30px 60px rgba(0,0,0,0.9), 0 15px 40px rgba(255,107,0,0.4), inset 0 -30px 50px rgba(255,107,0,0.15); z-index: 20; transform: translateZ(100px) translateY(-30px) scale(1.05) !important; }
+        
+        .stair-glow { position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%); width: 80%; height: 30px; background: radial-gradient(ellipse at center, rgba(255,107,0,0.8) 0%, transparent 70%); opacity: 0; transition: opacity 0.5s; filter: blur(15px); z-index: -1; }
+        .stair-step:hover .stair-glow { opacity: 1; }
+        
+        .stair-year { color: var(--brand-orange); font-size: 2rem; font-weight: 800; font-family: var(--font-heading); margin-bottom: 1rem; transform: translateZ(30px); text-shadow: 0 4px 10px rgba(0,0,0,0.5); transition: all 0.4s; }
+        .stair-step:hover .stair-year { color: #fff; text-shadow: 0 0 15px var(--brand-orange); transform: translateZ(50px); }
+        
+        .stair-title { color: #fff; font-size: 1.4rem; margin-bottom: 0.8rem; transform: translateZ(20px); transition: transform 0.4s; }
+        .stair-step:hover .stair-title { transform: translateZ(40px); }
+        
+        .stair-desc { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5; transform: translateZ(10px); transition: transform 0.4s; }
+        .stair-step:hover .stair-desc { transform: translateZ(30px); color: #ddd; }
+
+        @media (max-width: 1200px) {
+          .staircase-container { flex-wrap: wrap; height: auto; transform: none; }
+          .staircase-wrapper:hover .staircase-container { transform: none; }
+          .stair-step, .stair-step:nth-child(n) { height: auto; transform: none; margin-bottom: 2rem; width: 45%; }
+          .stair-step:hover { transform: translateY(-15px) !important; }
+        }
+        @media (max-width: 768px) {
+          .stair-step, .stair-step:nth-child(n) { width: 100%; }
+        }
+      </style>
+
+      <div class="staircase-wrapper">
+        <div class="staircase-container">
+          
+          <div class="stair-step">
+            <div class="stair-glow"></div>
+            <div class="stair-year">1985</div>
+            <h3 class="stair-title">The Foundation</h3>
+            <p class="stair-desc">Established by visionary engineers with an unrelenting passion for speed.</p>
+          </div>
+          
+          <div class="stair-step">
+            <div class="stair-glow"></div>
+            <div class="stair-year">1992</div>
+            <h3 class="stair-title">The First Title</h3>
+            <p class="stair-desc">Secured our maiden world championship against legendary, established rivals.</p>
+          </div>
+          
+          <div class="stair-step">
+            <div class="stair-glow"></div>
+            <div class="stair-year">2008</div>
+            <h3 class="stair-title">Innovation Era</h3>
+            <p class="stair-desc">Introduced active suspension and semi-automatic gearboxes to the grid.</p>
+          </div>
+          
+          <div class="stair-step">
+            <div class="stair-glow"></div>
+            <div class="stair-year">2020s</div>
+            <h3 class="stair-title">Modern Dominance</h3>
+            <p class="stair-desc">Consecutive hybrid-era championships solidifying our motorsport dynasty.</p>
+          </div>
+          
         </div>
       </div>
     </div>
@@ -169,22 +217,22 @@
       <p style="text-align: center; max-width: 600px; margin: 0 auto;">Our driving philosophy beyond the checkered flag.</p>
       
       <div class="grid-4">
-        <div class="glass-card">
+        <div class="glass-card" style="text-align: center;">
           <div style="font-size: 2.5rem; color: var(--brand-orange); margin-bottom: 1rem;">🎯</div>
           <h3>Performance</h3>
           <p>Relentless pursuit of speed, reliability, and race-day perfection.</p>
         </div>
-        <div class="glass-card">
+        <div class="glass-card" style="text-align: center;">
           <div style="font-size: 2.5rem; color: var(--brand-orange); margin-bottom: 1rem;">🌍</div>
           <h3>Sustainability</h3>
           <p>Pioneering carbon-neutral racing and advanced hybrid bio-fuels.</p>
         </div>
-        <div class="glass-card">
+        <div class="glass-card" style="text-align: center;">
           <div style="font-size: 2.5rem; color: var(--brand-orange); margin-bottom: 1rem;">💡</div>
           <h3>Innovation</h3>
           <p>Developing track technologies that shape the future of road cars.</p>
         </div>
-        <div class="glass-card">
+        <div class="glass-card" style="text-align: center;">
           <div style="font-size: 2.5rem; color: var(--brand-orange); margin-bottom: 1rem;">🤝</div>
           <h3>Inclusion</h3>
           <p>Fostering diversity in engineering and global driver academies.</p>
@@ -201,22 +249,22 @@
       
       <div class="grid-4">
         <div class="glass-card" style="text-align: center;">
-          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop" alt="Principal" style="aspect-ratio: 1/1; border-radius: 50%;">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop" alt="Principal" style="aspect-ratio: 1/1; border-radius: 50%; margin: 0 auto 1rem; display: block; width: 160px; object-fit: cover; object-position: top;">
           <h3>Jonathan Vance</h3>
           <p style="color: var(--brand-orange);">Team Principal</p>
         </div>
         <div class="glass-card" style="text-align: center;">
-          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop" alt="Tech Director" style="aspect-ratio: 1/1; border-radius: 50%;">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop" alt="Tech Director" style="aspect-ratio: 1/1; border-radius: 50%; margin: 0 auto 1rem; display: block; width: 160px; object-fit: cover; object-position: top;">
           <h3>Dr. Elena Reed</h3>
           <p style="color: var(--brand-orange);">Technical Director</p>
         </div>
         <div class="glass-card" style="text-align: center;">
-          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=600&auto=format&fit=crop" alt="Strategy Head" style="aspect-ratio: 1/1; border-radius: 50%;">
+          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=600&auto=format&fit=crop" alt="Strategy Head" style="aspect-ratio: 1/1; border-radius: 50%; margin: 0 auto 1rem; display: block; width: 160px; object-fit: cover; object-position: top;">
           <h3>Marcus Chen</h3>
           <p style="color: var(--brand-orange);">Head of Strategy</p>
         </div>
         <div class="glass-card" style="text-align: center;">
-          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=600&auto=format&fit=crop" alt="Aero Chief" style="aspect-ratio: 1/1; border-radius: 50%;">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=600&auto=format&fit=crop" alt="Aero Chief" style="aspect-ratio: 1/1; border-radius: 50%; margin: 0 auto 1rem; display: block; width: 160px; object-fit: cover; object-position: top;">
           <h3>Sarah Dubois</h3>
           <p style="color: var(--brand-orange);">Chief Aerodynamicist</p>
         </div>
@@ -326,3 +374,4 @@
   <script src="assets/js/animations.js"></script>
 </body>
 </html>
+

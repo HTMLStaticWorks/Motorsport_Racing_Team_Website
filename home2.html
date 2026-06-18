@@ -1,10 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="dark" dir="ltr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home 2 - Premium Motorsport Racing Team</title>
-  <meta name="description" content="High-end professional racing team platform showcasing race results, drivers, and merchandise.">
+  <meta name="description"
+    content="High-end professional racing team platform showcasing race results, drivers, and merchandise.">
   <link rel="stylesheet" href="assets/css/variables.css">
   <link rel="stylesheet" href="assets/css/global.css">
   <link rel="stylesheet" href="assets/css/components.css">
@@ -19,12 +21,17 @@
       position: relative;
       background: url('https://images.unsplash.com/photo-1568598717590-33d32dff7862?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat fixed;
     }
+
     .hero-parallax::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: radial-gradient(circle, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.8) 100%);
     }
+
     .hero-content {
       position: relative;
       z-index: 2;
@@ -32,6 +39,7 @@
       max-width: 900px;
       margin: 0 auto;
     }
+
     .hero-buttons {
       display: flex;
       gap: 1rem;
@@ -39,20 +47,23 @@
       animation: reveal 1s 0.4s forwards;
       opacity: 0;
     }
+
     .hero-title {
       font-size: clamp(3rem, 7vw, 6rem);
       text-transform: uppercase;
       letter-spacing: 4px;
       margin-bottom: 1rem;
       color: #fff;
-      text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
       animation: reveal 1s forwards;
     }
+
     .hero-title span {
       color: transparent;
       -webkit-text-stroke: 2px var(--brand-orange);
       text-shadow: none;
     }
+
     .hero-subtitle {
       font-size: 1.2rem;
       margin-bottom: 2rem;
@@ -60,10 +71,14 @@
       animation: reveal 1s 0.2s forwards;
       opacity: 0;
     }
+
     /* Duplicate Header and Footer styles from index.html */
     .main-header {
       position: fixed;
-      top: 0; left: 0; width: 100%; z-index: var(--z-nav);
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: var(--z-nav);
       background: rgba(10, 10, 10, 0.4);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
@@ -71,77 +86,279 @@
       transition: all var(--transition-normal);
       padding: 1.5rem 0;
     }
+
     .main-header.scrolled {
-      padding: 0.8rem 0; background: rgba(10, 10, 10, 0.9);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-    }
-    .nav-container {
-      display: flex; justify-content: space-between; align-items: center;
-      max-width: var(--container-width); margin: 0 auto; padding: 0 var(--container-padding);
-    }
-    .logo { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--brand-orange); letter-spacing: 2px; text-transform: uppercase; }
-    .nav-menu { display: flex; gap: 1rem; align-items: center; }
-    .nav-link {
-      font-family: var(--font-heading); font-size: 0.95rem; font-weight: 500; text-transform: uppercase;
-      letter-spacing: 1px; position: relative; padding: 0.5rem 0; transition: var(--transition-fast); cursor: none !important;
-    }
-    .nav-link::after {
-      content: ''; position: absolute; bottom: 0; left: 0; width: 0%; height: 2px; background: var(--brand-orange);
-      transition: width var(--transition-normal); box-shadow: 0 0 8px var(--brand-orange-glow);
-    }
-    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-    .nav-link:hover { color: var(--brand-orange); }
-    .nav-actions { display: flex; gap: 1rem; align-items: center; }
-    .toggles-nav { display: flex; gap: 0.5rem; }
-    .toggle-btn { background: transparent; border: 1px solid var(--border-color); color: var(--text-primary); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition-fast); cursor: none !important; }
-    .toggle-btn:hover { border-color: var(--brand-orange); box-shadow: 0 0 10px var(--brand-orange-glow); }
-    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: none !important; }
-    .hamburger span { width: 25px; height: 2px; background: var(--text-primary); transition: var(--transition-fast); }
-    
-    @media (max-width: 1024px) {
-      .nav-menu { position: fixed; top: 0; right: -100%; width: 300px; height: 100vh; background: var(--bg-primary); flex-direction: column; justify-content: center; transition: right var(--transition-normal); border-left: 1px solid var(--border-color); }
-      [dir="rtl"] .nav-menu { right: auto; left: -100%; border-left: none; border-right: 1px solid var(--border-color); }
-      .nav-menu.active { right: 0; }
-      [dir="rtl"] .nav-menu.active { left: 0; }
-      .hamburger { display: flex; z-index: var(--z-dropdown); }
-      .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-      .hamburger.active span:nth-child(2) { opacity: 0; }
-      .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-      .nav-actions { display: none; }
+      padding: 0.8rem 0;
+      background: rgba(10, 10, 10, 0.9);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     }
 
-    .main-footer { background: var(--bg-secondary); padding: 5rem 0 2rem; position: relative; }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 2fr; gap: 3rem; margin-bottom: 3rem; }
-    .footer-col h4 { color: var(--brand-orange); margin-bottom: 1.5rem; font-size: 1.2rem; text-transform: uppercase; }
-    .footer-links li { margin-bottom: 0.8rem; }
-    .footer-links a { color: var(--text-secondary); transition: var(--transition-fast); }
-    .footer-links a:hover { color: var(--brand-orange); padding-left: 5px; }
-    [dir="rtl"] .footer-links a:hover { padding-left: 0; padding-right: 5px; }
-    .social-icons { display: flex; gap: 1rem; margin-top: 1.5rem; }
-    .social-icon { width: 40px; height: 40px; background: var(--glass-bg); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: var(--transition-fast); }
-    .social-icon:hover { border-color: var(--brand-orange); background: var(--brand-orange-glow); transform: translateY(-3px); }
-    .footer-bottom { border-top: 1px solid var(--border-color); padding-top: 2rem; text-align: center; color: var(--text-secondary); font-size: 0.9rem; }
-    @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; } }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 0 var(--container-padding);
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--brand-orange);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .nav-link {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      padding: 0.5rem 0;
+      transition: var(--transition-fast);
+      cursor: none !important;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--brand-orange);
+      transition: width var(--transition-normal);
+      box-shadow: 0 0 8px var(--brand-orange-glow);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .nav-link:hover {
+      color: var(--brand-orange);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .toggles-nav {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .toggle-btn {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-fast);
+      cursor: none !important;
+    }
+
+    .toggle-btn:hover {
+      border-color: var(--brand-orange);
+      box-shadow: 0 0 10px var(--brand-orange-glow);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: none !important;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 2px;
+      background: var(--text-primary);
+      transition: var(--transition-fast);
+    }
+
+    @media (max-width: 1024px) {
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        height: 100vh;
+        background: var(--bg-primary);
+        flex-direction: column;
+        justify-content: center;
+        transition: right var(--transition-normal);
+        border-left: 1px solid var(--border-color);
+      }
+
+      [dir="rtl"] .nav-menu {
+        right: auto;
+        left: -100%;
+        border-left: none;
+        border-right: 1px solid var(--border-color);
+      }
+
+      .nav-menu.active {
+        right: 0;
+      }
+
+      [dir="rtl"] .nav-menu.active {
+        left: 0;
+      }
+
+      .hamburger {
+        display: flex;
+        z-index: var(--z-dropdown);
+      }
+
+      .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+
+      .nav-actions {
+        display: none;
+      }
+    }
+
+    .main-footer {
+      background: var(--bg-secondary);
+      padding: 5rem 0 2rem;
+      position: relative;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr 2fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-col h4 {
+      color: var(--brand-orange);
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+      color: var(--text-secondary);
+      transition: var(--transition-fast);
+    }
+
+    .footer-links a:hover {
+      color: var(--brand-orange);
+      padding-left: 5px;
+    }
+
+    [dir="rtl"] .footer-links a:hover {
+      padding-left: 0;
+      padding-right: 5px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--glass-bg);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: var(--transition-fast);
+    }
+
+    .social-icon:hover {
+      border-color: var(--brand-orange);
+      background: var(--brand-orange-glow);
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border-color);
+      padding-top: 2rem;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 1024px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
+
 <body>
 
   <!-- Navbar -->
   <header class="main-header">
     <div class="nav-container">
-      <a href="index.html" class="logo" style="display: flex; align-items: center; white-space: nowrap; margin-right: 1.5rem;">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--brand-orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; vertical-align: text-bottom;">
-          <path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a2 2 0 0 0-1.6-.8H9.3a2 2 0 0 0-1.6.8L5 11l-5.16.86a1 1 0 0 0-.84.99V16h3m14 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM7 16a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path>
+      <a href="index.html" class="logo"
+        style="display: flex; align-items: center; white-space: nowrap; margin-right: 1.5rem;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--brand-orange)" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; vertical-align: text-bottom;">
+          <path
+            d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a2 2 0 0 0-1.6-.8H9.3a2 2 0 0 0-1.6.8L5 11l-5.16.86a1 1 0 0 0-.84.99V16h3m14 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM7 16a2 2 0 1 1-4 0 2 2 0 0 1 4 0z">
+          </path>
         </svg>
         RACING TEAM
       </a>
-            <nav class="nav-menu" id="nav-menu">
+      <nav class="nav-menu" id="nav-menu">
         <div class="nav-item-dropdown" style="position: relative; display: inline-block;">
-          <a href="#" class="nav-link active" style="display: flex; align-items: center;">Home <span style="font-size: 0.7em; margin-left: 5px;">&#9660;</span></a>
-          <div class="dropdown-content" style="display: none; position: absolute; background: rgba(10, 10, 10, 0.9); min-width: 150px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.8); z-index: 1; border-radius: 4px; border: 1px solid var(--border-color); top: 100%; left: 0; flex-direction: column;">
-            <a href="index.html" style="color: var(--text-primary); padding: 12px 16px; text-decoration: none; font-family: var(--font-heading); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s;">Home 1</a>
-            <a href="home2.html" style="color: var(--text-primary); padding: 12px 16px; text-decoration: none; font-family: var(--font-heading); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s;">Home 2</a>
+          <a href="#" class="nav-link active" style="display: flex; align-items: center;">Home <span
+              style="font-size: 0.7em; margin-left: 5px;">&#9660;</span></a>
+          <div class="dropdown-content"
+            style="display: none; position: absolute; background: rgba(10, 10, 10, 0.9); min-width: 150px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.8); z-index: 1; border-radius: 4px; border: 1px solid var(--border-color); top: 100%; left: 0; flex-direction: column;">
+            <a href="index.html"
+              style="color: var(--text-primary); padding: 12px 16px; text-decoration: none; font-family: var(--font-heading); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s;">Home
+              1</a>
+            <a href="home2.html"
+              style="color: var(--text-primary); padding: 12px 16px; text-decoration: none; font-family: var(--font-heading); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s;">Home
+              2</a>
           </div>
         </div>
         <a href="about.html" class="nav-link">About</a>
@@ -153,24 +370,38 @@
         <a href="contact.html" class="nav-link">Contact</a>
       </nav>
       <style>
-        .nav-item-dropdown:hover .dropdown-content { display: flex !important; }
-        .dropdown-content a:hover { color: var(--brand-orange) !important; }
-        .nav-menu { display: flex; align-items: center; white-space: nowrap; margin-right: 2.5rem; }
+        .nav-item-dropdown:hover .dropdown-content {
+          display: flex !important;
+        }
+
+        .dropdown-content a:hover {
+          color: var(--brand-orange) !important;
+        }
+
+        .nav-menu {
+          display: flex;
+          align-items: center;
+          white-space: nowrap;
+          margin-right: 2.5rem;
+        }
       </style>
       <div class="nav-actions">
         <div class="toggles-nav">
           <button class="toggle-btn theme-toggle" title="Toggle Theme">🌓</button>
           <button class="toggle-btn rtl-toggle" title="Toggle RTL">⇄</button>
         </div>
-        <a href="register.html" class="btn btn-primary" style="height: 40px; padding: 0 1rem; font-size: 0.8rem; white-space: nowrap;">Join The Team</a>
-        <a href="sponsors.html" class="btn btn-secondary" style="height: 40px; padding: 0 1rem; font-size: 0.8rem; white-space: nowrap;">Become Sponsor</a>
+        <a href="register.html" class="btn btn-primary"
+          style="height: 40px; padding: 0 1rem; font-size: 0.8rem; white-space: nowrap;">Join The Team</a>
+        <a href="sponsors.html" class="btn btn-secondary"
+          style="height: 40px; padding: 0 1rem; font-size: 0.8rem; white-space: nowrap;">Become Sponsor</a>
       </div>
       <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
     </div>
   </header>
 
   <!-- 1. Premium Hero -->
-  <section class="hero-parallax" style="background-image: url('assets/images/home2-hero.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+  <section class="hero-parallax"
+    style="background-image: url('assets/images/home2-hero.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
     <div class="hero-content">
       <h1 class="hero-title">Beyond <span>Limits</span></h1>
       <p class="hero-subtitle">Embrace the raw power and technological mastery of the future of racing.</p>
@@ -185,28 +416,198 @@
   <section class="reveal">
     <div class="container">
       <h2 style="text-align: center; margin-bottom: 1rem;">Championship Journey</h2>
-      <p style="text-align: center; max-width: 600px; margin: 0 auto;">A legacy forged in the fires of competition and victory.</p>
-      
-      <div class="grid-4">
-        <div class="glass-card">
-          <img src="https://images.unsplash.com/photo-1533618485292-1fb4284b7a13?q=80&w=600&auto=format&fit=crop" alt="Victory">
-          <h3>The First Title</h3>
-          <p>Our breakthrough season marked by 7 podium finishes and total dominance.</p>
+      <p style="text-align: center; max-width: 600px; margin: 0 auto;">A legacy forged in the fires of competition and
+        victory.</p>
+
+      <style>
+        .vertical-journey-container {
+          position: relative;
+          max-width: 900px;
+          margin: 2rem auto 2rem;
+          padding: 10rem 0 2rem;
+          perspective: 1500px;
+        }
+
+        .vertical-path {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 50%;
+          width: 4px;
+          background: linear-gradient(to bottom, transparent, var(--brand-orange), rgba(255, 107, 0, 0.2), transparent);
+          transform: translateX(-50%) translateZ(-100px);
+          z-index: 0;
+        }
+
+        .journey-node {
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 12rem;
+          z-index: 1;
+          transform-style: preserve-3d;
+        }
+
+        .journey-node:last-child {
+          margin-bottom: 0;
+        }
+
+        .node-point {
+          width: 24px;
+          height: 24px;
+          background: var(--brand-orange);
+          border-radius: 50%;
+          box-shadow: 0 0 20px var(--brand-orange-glow);
+          transform: translateZ(-20px);
+          transition: all 0.5s ease;
+          cursor: none !important;
+          position: relative;
+          z-index: 2;
+          border: 3px solid #111;
+        }
+
+        .node-content {
+          position: absolute;
+          width: 350px;
+          background: rgba(15, 15, 15, 0.7);
+          backdrop-filter: blur(12px);
+          border: 1px solid var(--border-color);
+          border-radius: 16px;
+          transform: translateZ(-80px) scale(0.9);
+          opacity: 0.5;
+          transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          z-index: 1;
+          overflow: hidden;
+          padding: 0;
+        }
+
+        .journey-node:nth-child(odd) .node-content {
+          right: calc(50% + 40px);
+          text-align: right;
+          transform-origin: right center;
+        }
+
+        .journey-node:nth-child(even) .node-content {
+          left: calc(50% + 40px);
+          text-align: left;
+          transform-origin: left center;
+        }
+
+        .journey-node:hover .node-point {
+          transform: translateZ(30px) scale(1.4);
+          background: #fff;
+          box-shadow: 0 0 30px var(--brand-orange);
+        }
+
+        .journey-node:hover .node-content {
+          transform: translateZ(50px) scale(1.05);
+          opacity: 1;
+          border-color: var(--brand-orange);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 107, 0, 0.15);
+          z-index: 10;
+          background: rgba(20, 20, 20, 0.95);
+        }
+
+        .node-img {
+          width: 100%;
+          height: 180px;
+          object-fit: cover;
+          border-radius: 16px 16px 0 0;
+          margin-bottom: 0;
+          filter: grayscale(50%);
+          transition: filter 0.5s ease;
+          display: block;
+        }
+
+        .journey-node:hover .node-img {
+          filter: grayscale(0%);
+        }
+
+        .node-text-wrapper {
+          padding: 1.5rem;
+        }
+
+        .node-title {
+          color: #fff;
+          margin-bottom: 0.5rem;
+          font-size: 1.5rem;
+          font-family: var(--font-heading);
+        }
+
+        .journey-node:hover .node-title {
+          color: var(--brand-orange);
+        }
+
+        @media (max-width: 850px) {
+          .vertical-path {
+            left: 40px;
+          }
+
+          .journey-node {
+            justify-content: flex-start;
+            padding-left: 28px;
+            margin-bottom: 6rem;
+          }
+
+          .journey-node:nth-child(odd) .node-content,
+          .journey-node:nth-child(even) .node-content {
+            position: relative;
+            left: 0;
+            right: 0;
+            text-align: left;
+            width: calc(100vw - 100px);
+            margin-left: 2rem;
+            transform-origin: left center;
+          }
+        }
+      </style>
+
+      <div class="vertical-journey-container">
+        <div class="vertical-path"></div>
+
+        <div class="journey-node">
+          <div class="node-content">
+            <img class="node-img" src="assets/images/first_title.png" alt="Victory">
+            <div class="node-text-wrapper">
+              <h3 class="node-title">The First Title</h3>
+              <p>Our breakthrough season marked by 7 podium finishes and total dominance.</p>
+            </div>
+          </div>
+          <div class="node-point"></div>
         </div>
-        <div class="glass-card">
-          <img src="https://images.unsplash.com/photo-1563212891-b6aab0afb79a?q=80&w=600&auto=format&fit=crop" alt="Adversity">
-          <h3>Overcoming Adversity</h3>
-          <p>Battling back from mechanical failures to clinch the constructor's championship.</p>
+
+        <div class="journey-node">
+          <div class="node-point"></div>
+          <div class="node-content">
+            <img class="node-img" src="assets/images/adversity.png" alt="Adversity">
+            <div class="node-text-wrapper">
+              <h3 class="node-title">Overcoming Adversity</h3>
+              <p>Battling back from mechanical failures to clinch the constructor's championship.</p>
+            </div>
+          </div>
         </div>
-        <div class="glass-card">
-          <img src="https://images.unsplash.com/photo-1541443131876-44b0322278fd?q=80&w=600&auto=format&fit=crop" alt="Dominance">
-          <h3>Decade of Dominance</h3>
-          <p>Establishing a dynasty with consecutive constructor and driver titles.</p>
+
+        <div class="journey-node">
+          <div class="node-content">
+            <img class="node-img" src="assets/images/dominance.png" alt="Dominance">
+            <div class="node-text-wrapper">
+              <h3 class="node-title">Decade of Dominance</h3>
+              <p>Establishing a dynasty with consecutive constructor and driver titles.</p>
+            </div>
+          </div>
+          <div class="node-point"></div>
         </div>
-        <div class="glass-card">
-          <img src="https://images.unsplash.com/photo-1629844837424-d2e3077759a2?q=80&w=600&auto=format&fit=crop" alt="Future">
-          <h3>The Next Era</h3>
-          <p>Pioneering hybrid technologies to conquer the future of global motorsport.</p>
+
+        <div class="journey-node">
+          <div class="node-point"></div>
+          <div class="node-content">
+            <img class="node-img" src="assets/images/next_era.png" alt="Future">
+            <div class="node-text-wrapper">
+              <h3 class="node-title">The Next Era</h3>
+              <p>Pioneering hybrid technologies to conquer the future of global motorsport.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -216,28 +617,41 @@
   <section class="reveal" style="background: var(--bg-secondary);">
     <div class="container">
       <h2 style="text-align: center; margin-bottom: 1rem;">Elite Driver Showcase</h2>
-      <p style="text-align: center; max-width: 600px; margin: 0 auto;">Meet the talent pushing our cars to their absolute limits.</p>
-      
+      <p style="text-align: center; max-width: 600px; margin: 0 auto;">Meet the talent pushing our cars to their
+        absolute limits.</p>
+
       <div class="grid-4">
-        <div class="glass-card">
-          <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=600&auto=format&fit=crop" alt="Driver Profile 1" style="aspect-ratio: 3/4;">
-          <h3 style="margin-bottom: 0.5rem;">Michael Trent</h3>
-          <p style="color: var(--brand-orange); font-size: 0.9rem;">World Champion</p>
+        <div class="glass-card" style="padding: 0; overflow: hidden;">
+          <img src="assets/images/michael_trent.png" alt="Michael Trent"
+            style="width: 100%; height: 350px; object-fit: cover; border-radius: 12px 12px 0 0; margin-bottom: 0; display: block;">
+          <div style="padding: 1.5rem 2rem 2rem;">
+            <h3 style="margin-bottom: 0.5rem;">Michael Trent</h3>
+            <p style="color: var(--brand-orange); font-size: 0.9rem;">World Champion</p>
+          </div>
         </div>
-        <div class="glass-card">
-          <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=600&auto=format&fit=crop" alt="Driver Profile 2" style="aspect-ratio: 3/4;">
-          <h3 style="margin-bottom: 0.5rem;">David Russo</h3>
-          <p style="color: var(--brand-orange); font-size: 0.9rem;">Speed Specialist</p>
+        <div class="glass-card" style="padding: 0; overflow: hidden;">
+          <img src="assets/images/david_russo.png" alt="David Russo"
+            style="width: 100%; height: 350px; object-fit: cover; border-radius: 12px 12px 0 0; margin-bottom: 0; display: block;">
+          <div style="padding: 1.5rem 2rem 2rem;">
+            <h3 style="margin-bottom: 0.5rem;">David Russo</h3>
+            <p style="color: var(--brand-orange); font-size: 0.9rem;">Speed Specialist</p>
+          </div>
         </div>
-        <div class="glass-card">
-          <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?q=80&w=600&auto=format&fit=crop" alt="Driver Profile 3" style="aspect-ratio: 3/4;">
-          <h3 style="margin-bottom: 0.5rem;">Liam O'Connor</h3>
-          <p style="color: var(--brand-orange); font-size: 0.9rem;">Tactical Mastermind</p>
+        <div class="glass-card" style="padding: 0; overflow: hidden;">
+          <img src="assets/images/liam_oconnor.png" alt="Liam O'Connor"
+            style="width: 100%; height: 350px; object-fit: cover; border-radius: 12px 12px 0 0; margin-bottom: 0; display: block;">
+          <div style="padding: 1.5rem 2rem 2rem;">
+            <h3 style="margin-bottom: 0.5rem;">Liam O'Connor</h3>
+            <p style="color: var(--brand-orange); font-size: 0.9rem;">Tactical Mastermind</p>
+          </div>
         </div>
-        <div class="glass-card">
-          <img src="https://images.unsplash.com/photo-1542385151-efd9000785a0?q=80&w=600&auto=format&fit=crop" alt="Driver Profile 4" style="aspect-ratio: 3/4;">
-          <h3 style="margin-bottom: 0.5rem;">Sophia Bell</h3>
-          <p style="color: var(--brand-orange); font-size: 0.9rem;">Endurance Expert</p>
+        <div class="glass-card" style="padding: 0; overflow: hidden;">
+          <img src="assets/images/sophia_bell.png" alt="Sophia Bell"
+            style="width: 100%; height: 350px; object-fit: cover; border-radius: 12px 12px 0 0; margin-bottom: 0; display: block;">
+          <div style="padding: 1.5rem 2rem 2rem;">
+            <h3 style="margin-bottom: 0.5rem;">Sophia Bell</h3>
+            <p style="color: var(--brand-orange); font-size: 0.9rem;">Endurance Expert</p>
+          </div>
         </div>
       </div>
     </div>
@@ -248,22 +662,26 @@
     <div class="container">
       <h2 style="text-align: center; margin-bottom: 1rem;">Performance Analytics</h2>
       <p style="text-align: center; max-width: 600px; margin: 0 auto;">Data-driven perfection on every corner.</p>
-      
+
       <div class="grid-4">
         <div class="glass-card" style="text-align: center; justify-content: center;">
-          <div style="font-size: 3rem; color: var(--brand-orange); font-family: var(--font-heading); font-weight: 700;">1.8s</div>
+          <div style="font-size: 3rem; color: var(--brand-orange); font-family: var(--font-heading); font-weight: 700;">
+            1.8s+</div>
           <h3>Average Pit Stop</h3>
         </div>
         <div class="glass-card" style="text-align: center; justify-content: center;">
-          <div style="font-size: 3rem; color: var(--brand-orange); font-family: var(--font-heading); font-weight: 700;">360kph</div>
+          <div style="font-size: 3rem; color: var(--brand-orange); font-family: var(--font-heading); font-weight: 700;">
+            360kph+</div>
           <h3>Top Speed Recorded</h3>
         </div>
         <div class="glass-card" style="text-align: center; justify-content: center;">
-          <div style="font-size: 3rem; color: var(--brand-orange); font-family: var(--font-heading); font-weight: 700;">5G</div>
+          <div style="font-size: 3rem; color: var(--brand-orange); font-family: var(--font-heading); font-weight: 700;">
+            5G+</div>
           <h3>Max Lateral Force</h3>
         </div>
         <div class="glass-card" style="text-align: center; justify-content: center;">
-          <div style="font-size: 3rem; color: var(--brand-orange); font-family: var(--font-heading); font-weight: 700;">10k+</div>
+          <div style="font-size: 3rem; color: var(--brand-orange); font-family: var(--font-heading); font-weight: 700;">
+            10k+</div>
           <h3>Simulated Laps/Week</h3>
         </div>
       </div>
@@ -275,38 +693,111 @@
     <div class="container">
       <h2 style="text-align: center; margin-bottom: 1rem;">Racing Technology</h2>
       <p style="text-align: center; max-width: 600px; margin: 0 auto;">The engineering marvels that power our team.</p>
-      
-      <div class="grid-4">
-        <div class="glass-card">
-          <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=600&auto=format&fit=crop" alt="Carbon Fiber">
-          <h3>Carbon Composites</h3>
-          <p>Ultra-lightweight chassis built for safety and maximum rigidity.</p>
+
+      <style>
+        .tech-split-container { display: flex; align-items: stretch; gap: 4rem; max-width: 1200px; margin: 4rem auto; min-height: 500px; padding: 0 2rem; }
+        
+        /* Left Side: 3D Scanner */
+        .tech-scanner-view { flex: 1; perspective: 1500px; display: flex; align-items: center; justify-content: center; }
+        .tech-scanner-frame { position: relative; width: 100%; height: 450px; border-radius: 20px; border: 2px solid rgba(255,107,0,0.3); background: rgba(10,10,10,0.9); box-shadow: 0 0 50px rgba(0,0,0,0.8), inset 0 0 30px rgba(255,107,0,0.1); transform-style: preserve-3d; transform: rotateY(15deg) rotateX(5deg); transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .tech-scanner-frame::before { content: ''; position: absolute; top: -15px; bottom: -15px; left: -15px; right: -15px; border: 1px solid rgba(255,107,0,0.2); border-radius: 25px; transform: translateZ(-40px); }
+        .tech-scanner-frame::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,107,0,0.15) 3px, rgba(255,107,0,0.15) 4px); pointer-events: none; z-index: 10; border-radius: 18px; opacity: 0.6; mix-blend-mode: overlay; }
+        
+        .scanner-image-wrapper { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; border-radius: 18px; transform: translateZ(20px); }
+        .tech-scanner-image { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: opacity 0.3s, filter 0.3s; filter: contrast(1.1); }
+        
+        .scanner-line { position: absolute; left: 0; right: 0; height: 3px; background: #fff; box-shadow: 0 0 15px var(--brand-orange), 0 0 30px var(--brand-orange), 0 0 45px var(--brand-orange); z-index: 11; animation: scan 4s infinite ease-in-out; border-radius: 50%; }
+        
+        @keyframes scan { 0% { top: 5%; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { top: 95%; opacity: 0; } }
+
+        /* Right Side: Interactive List */
+        .tech-list-view { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 1rem; }
+        .tech-list-item { padding: 2rem; border-left: 4px solid rgba(255,255,255,0.1); cursor: none !important; transition: all 0.4s ease; position: relative; border-radius: 0 12px 12px 0; background: transparent; }
+        .tech-list-item:hover, .tech-list-item.active-tech { border-left-color: var(--brand-orange); background: linear-gradient(90deg, rgba(255,107,0,0.1) 0%, transparent 100%); padding-left: 3rem; transform: translateX(10px); }
+        
+        .tech-list-title { color: #fff; font-size: 1.8rem; margin-bottom: 0.5rem; font-family: var(--font-heading); transition: color 0.3s; }
+        .tech-list-item:hover .tech-list-title, .tech-list-item.active-tech .tech-list-title { color: var(--brand-orange); text-shadow: 0 0 15px rgba(255,107,0,0.4); }
+        .tech-list-desc { color: var(--text-secondary); font-size: 1rem; line-height: 1.5; margin: 0; }
+
+        @media (max-width: 900px) {
+          .tech-split-container { flex-direction: column; gap: 2rem; }
+          .tech-scanner-view { perspective: 1000px; }
+          .tech-scanner-frame { transform: rotateY(0) rotateX(0); height: 300px; }
+        }
+      </style>
+
+      <div class="tech-split-container">
+        <!-- 3D Scanner View -->
+        <div class="tech-scanner-view">
+          <div class="tech-scanner-frame" id="scannerFrame">
+            <div class="scanner-line"></div>
+            <div class="scanner-image-wrapper">
+              <img src="assets/images/carbon_composites.png" alt="Technology View" class="tech-scanner-image" id="mainTechImage">
+            </div>
+          </div>
         </div>
-        <div class="glass-card">
-          <img src="https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?q=80&w=600&auto=format&fit=crop" alt="Hybrid Engine">
-          <h3>ERS Hybrid Systems</h3>
-          <p>Recuperating kinetic and thermal energy for massive acceleration boosts.</p>
-        </div>
-        <div class="glass-card">
-          <img src="https://images.unsplash.com/photo-1541443131876-44b0322278fd?q=80&w=600&auto=format&fit=crop" alt="Wind Tunnel">
-          <h3>CFD Aerodynamics</h3>
-          <p>Computational fluid dynamics sculpting airflow for optimal downforce.</p>
-        </div>
-        <div class="glass-card">
-          <img src="https://images.unsplash.com/photo-1536643272993-27082f4b46c6?q=80&w=600&auto=format&fit=crop" alt="Data Center">
-          <h3>Edge Computing</h3>
-          <p>Processing gigabytes of telemetry data in milliseconds at trackside.</p>
+
+        <!-- Sleek Interactive List -->
+        <div class="tech-list-view">
+          <div class="tech-list-item active-tech" onmouseenter="changeTechImage(this, 'assets/images/carbon_composites.png')">
+            <h3 class="tech-list-title">Carbon Composites</h3>
+            <p class="tech-list-desc">Ultra-lightweight chassis built for safety and maximum rigidity under extreme forces.</p>
+          </div>
+          
+          <div class="tech-list-item" onmouseenter="changeTechImage(this, 'assets/images/ERS%20Hybrid%20Systems.png')">
+            <h3 class="tech-list-title">ERS Hybrid Systems</h3>
+            <p class="tech-list-desc">Recuperating kinetic and thermal energy for massive acceleration boosts on straights.</p>
+          </div>
+          
+          <div class="tech-list-item" onmouseenter="changeTechImage(this, 'assets/images/CFD%20Aerodynamics.png')">
+            <h3 class="tech-list-title">CFD Aerodynamics</h3>
+            <p class="tech-list-desc">Computational fluid dynamics sculpting airflow for optimal downforce and cornering speeds.</p>
+          </div>
+          
+          <div class="tech-list-item" onmouseenter="changeTechImage(this, 'assets/images/Edge%20Computing.png')">
+            <h3 class="tech-list-title">Edge Computing</h3>
+            <p class="tech-list-desc">Processing gigabytes of telemetry data in milliseconds directly at the trackside.</p>
+          </div>
         </div>
       </div>
+
+      <script>
+        function changeTechImage(element, imageUrl) {
+          // Update active state in list
+          document.querySelectorAll('.tech-list-item').forEach(item => {
+            item.classList.remove('active-tech');
+          });
+          element.classList.add('active-tech');
+
+          // Trigger 3D scanner animation
+          const scannerImg = document.getElementById('mainTechImage');
+          const scannerFrame = document.getElementById('scannerFrame');
+          
+          // Glitch out
+          scannerFrame.style.transform = 'rotateY(20deg) rotateX(10deg) scale(0.95)';
+          scannerImg.style.opacity = '0.2';
+          scannerImg.style.filter = 'contrast(2) brightness(1.5) hue-rotate(90deg)';
+          
+          // Change image and restore
+          setTimeout(() => {
+            scannerImg.src = imageUrl;
+            scannerFrame.style.transform = 'rotateY(15deg) rotateX(5deg) scale(1)';
+            scannerImg.style.opacity = '0.8';
+            scannerImg.style.filter = 'contrast(1.1)';
+          }, 250);
+        }
+      </script>
     </div>
   </section>
 
   <!-- 6. Become Sponsor CTA -->
-  <section class="reveal neon-border-top" style="background: url('https://images.unsplash.com/photo-1506469717960-433cebe3f181?q=80&w=2000&auto=format&fit=crop') center/cover; position: relative;">
+  <section class="reveal neon-border-top"
+    style="background: url('https://images.unsplash.com/photo-1506469717960-433cebe3f181?q=80&w=2000&auto=format&fit=crop') center/cover; position: relative;">
     <div style="position: absolute; top:0; left:0; width:100%; height:100%; background:rgba(10,10,10,0.85);"></div>
     <div class="container" style="position: relative; z-index: 2; text-align: center;">
       <h2>Partner With Champions</h2>
-      <p style="max-width: 600px; margin: 0 auto 2rem; color: #ccc;">Align your brand with the pinnacle of technological innovation and elite global sports performance.</p>
+      <p style="max-width: 600px; margin: 0 auto 2rem; color: #ccc;">Align your brand with the pinnacle of technological
+        innovation and elite global sports performance.</p>
       <a href="sponsors.html" class="btn btn-primary">View Sponsorship Packages</a>
     </div>
   </section>
@@ -317,12 +808,16 @@
       <div class="footer-grid">
         <div class="footer-col">
           <h4 style="font-size: 1.5rem; letter-spacing: 2px; display: flex; align-items: center; margin-bottom: 1rem;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--brand-orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; vertical-align: text-bottom;">
-          <path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a2 2 0 0 0-1.6-.8H9.3a2 2 0 0 0-1.6.8L5 11l-5.16.86a1 1 0 0 0-.84.99V16h3m14 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM7 16a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path>
-        </svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--brand-orange)" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; vertical-align: text-bottom;">
+              <path
+                d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a2 2 0 0 0-1.6-.8H9.3a2 2 0 0 0-1.6.8L5 11l-5.16.86a1 1 0 0 0-.84.99V16h3m14 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM7 16a2 2 0 1 1-4 0 2 2 0 0 1 4 0z">
+              </path>
+            </svg>
             RACING TEAM
           </h4>
-          <p style="font-size: 0.9rem; color: var(--text-secondary);">Pushing the boundaries of motorsport engineering and elite performance. Join our championship journey.</p>
+          <p style="font-size: 0.9rem; color: var(--text-secondary);">Pushing the boundaries of motorsport engineering
+            and elite performance. Join our championship journey.</p>
           <div class="social-icons">
             <a href="#" class="social-icon" aria-label="Facebook">FB</a>
             <a href="#" class="social-icon" aria-label="Twitter">X</a>
@@ -330,7 +825,7 @@
             <a href="#" class="social-icon" aria-label="YouTube">YT</a>
           </div>
         </div>
-        
+
         <div class="footer-col">
           <h4>Quick Links</h4>
           <ul class="footer-links">
@@ -341,7 +836,7 @@
             <li><a href="merchandise.html">Shop Merch</a></li>
           </ul>
         </div>
-        
+
         <div class="footer-col">
           <h4>Categories</h4>
           <ul class="footer-links">
@@ -352,7 +847,7 @@
             <li><a href="#">Technology</a></li>
           </ul>
         </div>
-        
+
         <div class="footer-col">
           <h4>Contact Info</h4>
           <ul class="footer-links" style="color: var(--text-secondary); font-size: 0.9rem;">
@@ -361,17 +856,18 @@
             <li style="margin-bottom: 1rem;">+44 20 7946 0958</li>
           </ul>
         </div>
-        
+
         <div class="footer-col">
           <h4>Newsletter</h4>
-          <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">Subscribe for paddock updates.</p>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">Subscribe for paddock
+            updates.</p>
           <form style="display: flex; flex-direction: column; gap: 10px;">
             <input type="email" class="form-control" placeholder="Email Address" required>
             <button type="submit" class="btn btn-secondary" style="height: 40px; font-size: 0.8rem;">Sign Up</button>
           </form>
         </div>
       </div>
-      
+
       <div class="footer-bottom">
         <p>&copy; 2026 Premium Motorsport Racing Team. All Rights Reserved.</p>
       </div>
@@ -381,4 +877,5 @@
   <script src="assets/js/main.js"></script>
   <script src="assets/js/animations.js"></script>
 </body>
+
 </html>

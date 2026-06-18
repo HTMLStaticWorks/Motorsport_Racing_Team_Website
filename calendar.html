@@ -69,7 +69,7 @@
       </a>
             <nav class="nav-menu" id="nav-menu">
         <div class="nav-item-dropdown" style="position: relative; display: inline-block;">
-          <a href="#" class="nav-link active" style="display: flex; align-items: center;">Home <span style="font-size: 0.7em; margin-left: 5px;">&#9660;</span></a>
+          <a href="#" class="nav-link" style="display: flex; align-items: center;">Home <span style="font-size: 0.7em; margin-left: 5px;">&#9660;</span></a>
           <div class="dropdown-content" style="display: none; position: absolute; background: rgba(10, 10, 10, 0.9); min-width: 150px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.8); z-index: 1; border-radius: 4px; border: 1px solid var(--border-color); top: 100%; left: 0; flex-direction: column;">
             <a href="index.html" style="color: var(--text-primary); padding: 12px 16px; text-decoration: none; font-family: var(--font-heading); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s;">Home 1</a>
             <a href="home2.html" style="color: var(--text-primary); padding: 12px 16px; text-decoration: none; font-family: var(--font-heading); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s;">Home 2</a>
@@ -78,7 +78,7 @@
         <a href="about.html" class="nav-link">About</a>
         <a href="services.html" class="nav-link">Services</a>
         <a href="drivers.html" class="nav-link">Drivers</a>
-        <a href="calendar.html" class="nav-link">Race Calendar</a>
+        <a href="calendar.html" class="nav-link active">Race Calendar</a>
         <a href="results.html" class="nav-link">Results</a>
         <a href="merchandise.html" class="nav-link">Merchandise</a>
         <a href="contact.html" class="nav-link">Contact</a>
@@ -144,67 +144,209 @@
     </div>
   </section>
 
-  <!-- 3. International Races -->
-  <section class="reveal" style="background: var(--bg-secondary);">
+  <!-- 3. Parallax 3D World Map -->
+  <section class="reveal" style="background: var(--bg-secondary); overflow: hidden;">
     <div class="container">
-      <h2 style="text-align: center; margin-bottom: 1rem;">International Highlights</h2>
-      <p style="text-align: center; max-width: 600px; margin: 0 auto;">Key global events from earlier this season.</p>
+      <h2 style="text-align: center; margin-bottom: 1rem;">Global Reach</h2>
+      <p style="text-align: center; max-width: 600px; margin: 0 auto 3rem;">Explore our worldwide race locations.</p>
       
-      <div class="grid-4">
-        <div class="glass-card">
-          <img src="https://images.unsplash.com/photo-1541443131876-44b0322278fd?q=80&w=600&auto=format&fit=crop" alt="Monaco">
-          <h3>Monaco GP</h3>
-          <p>Status: Completed</p>
-        </div>
-        <div class="glass-card">
-          <img src="https://images.unsplash.com/photo-1533618485292-1fb4284b7a13?q=80&w=600&auto=format&fit=crop" alt="Silverstone">
-          <h3>British GP</h3>
-          <p>Status: Completed</p>
-        </div>
-        <div class="glass-card">
-          <img src="https://images.unsplash.com/photo-1563212891-b6aab0afb79a?q=80&w=600&auto=format&fit=crop" alt="Monza">
-          <h3>Italian GP</h3>
-          <p>Status: Completed</p>
-        </div>
-        <div class="glass-card">
-          <img src="https://images.unsplash.com/photo-1629844837424-d2e3077759a2?q=80&w=600&auto=format&fit=crop" alt="Spa">
-          <h3>Belgian GP</h3>
-          <p>Status: Completed</p>
+      <style>
+        .map-container {
+          position: relative;
+          width: 100%;
+          height: 500px;
+          perspective: 1500px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .map-3d {
+          position: relative;
+          width: 80%;
+          height: 400px;
+          background: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1000&auto=format&fit=crop') center/cover;
+          border-radius: 20px;
+          transform-style: preserve-3d;
+          transform: rotateX(40deg) rotateZ(-10deg);
+          box-shadow: 0 30px 50px rgba(0,0,0,0.8);
+          transition: transform 1s ease;
+        }
+        .map-container:hover .map-3d {
+          transform: rotateX(30deg) rotateZ(0deg);
+        }
+        .map-3d::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: rgba(20,20,20,0.6);
+          border-radius: 20px;
+          border: 1px solid var(--brand-orange);
+        }
+        .map-pin {
+          position: absolute;
+          width: 20px;
+          height: 20px;
+          background: var(--brand-orange);
+          border-radius: 50%;
+          transform: translateZ(50px);
+          box-shadow: 0 0 15px var(--brand-orange-glow);
+          cursor: pointer;
+          transition: all 0.3s ease;
+          z-index: 2;
+        }
+        .map-pin::before {
+          content: '';
+          position: absolute;
+          top: 50%; left: 50%;
+          transform: translate(-50%, -50%);
+          width: 10px; height: 10px;
+          background: #fff;
+          border-radius: 50%;
+        }
+        .map-pin:hover {
+          transform: translateZ(80px) scale(1.5);
+        }
+        .pin-info {
+          position: absolute;
+          bottom: 30px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: rgba(10,10,10,0.9);
+          border: 1px solid var(--brand-orange);
+          padding: 10px 15px;
+          border-radius: 8px;
+          width: max-content;
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.3s ease;
+          color: #fff;
+          font-family: var(--font-heading);
+        }
+        .map-pin:hover .pin-info {
+          opacity: 1;
+        }
+        .pin-1 { top: 30%; left: 20%; }
+        .pin-2 { top: 50%; left: 50%; }
+        .pin-3 { top: 40%; left: 75%; }
+        @media (max-width: 768px) {
+          .map-3d { width: 95%; height: 300px; }
+        }
+      </style>
+
+      <div class="map-container">
+        <div class="map-3d">
+          <div class="map-pin pin-1">
+            <div class="pin-info">Americas<br><span style="font-size: 0.8rem; color:var(--text-secondary);">3 Rounds</span></div>
+          </div>
+          <div class="map-pin pin-2">
+            <div class="pin-info">Europe<br><span style="font-size: 0.8rem; color:var(--text-secondary);">10 Rounds</span></div>
+          </div>
+          <div class="map-pin pin-3">
+            <div class="pin-info">Asia<br><span style="font-size: 0.8rem; color:var(--text-secondary);">5 Rounds</span></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 4. National Races -->
+  <!-- 4. Perspective Track Layouts -->
   <section class="reveal">
     <div class="container">
-      <h2 style="text-align: center; margin-bottom: 1rem;">National Series</h2>
-      <p style="text-align: center; max-width: 600px; margin: 0 auto;">Domestic championship rounds featuring our junior academy drivers.</p>
+      <h2 style="text-align: center; margin-bottom: 1rem;">Circuit Architectures</h2>
+      <p style="text-align: center; max-width: 600px; margin: 0 auto 3rem;">Analyze the defining characteristics of upcoming circuits.</p>
       
-      <div class="grid-4">
-        <div class="glass-card">
-          <div style="font-size: 0.9rem; color: var(--brand-orange); font-weight: bold; margin-bottom: 10px;">Round 1</div>
-          <h3>Brands Hatch</h3>
-          <p>F3 National Series</p>
-          <p style="font-size: 0.8rem; color: var(--text-secondary);">Result: P1, P4</p>
+      <style>
+        .track-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 3rem;
+          perspective: 1200px;
+        }
+        .track-card {
+          position: relative;
+          background: rgba(255,255,255,0.02);
+          border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 16px;
+          padding: 2rem;
+          height: 350px;
+          transform-style: preserve-3d;
+          transition: transform 0.6s ease;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          cursor: pointer;
+        }
+        .track-card:hover {
+          transform: rotateY(15deg) rotateX(10deg);
+          border-color: var(--brand-orange);
+          box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .track-svg {
+          width: 80%;
+          height: 150px;
+          margin: auto;
+          transform: translateZ(30px);
+          filter: drop-shadow(0 0 10px var(--brand-orange-glow));
+          transition: transform 0.5s ease;
+        }
+        .track-card:hover .track-svg {
+          transform: translateZ(80px) scale(1.1);
+        }
+        .track-data {
+          transform: translateZ(50px);
+          text-align: center;
+          margin-top: 1rem;
+        }
+        .track-data h3 { margin: 0 0 0.5rem; color: var(--brand-orange); }
+        .track-stat { position: absolute; font-family: monospace; font-size: 0.8rem; color: #fff; background: rgba(255,69,0,0.8); padding: 2px 6px; border-radius: 4px; opacity: 0; transition: opacity 0.3s; transform: translateZ(100px); }
+        .track-card:hover .track-stat { opacity: 1; }
+        @media (max-width: 768px) { .track-grid { grid-template-columns: 1fr; } }
+      </style>
+
+      <div class="track-grid">
+        <div class="track-card">
+          <svg class="track-svg" viewBox="0 0 100 50" stroke="var(--brand-orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <path d="M10,25 C10,10 40,10 50,25 C60,40 90,40 90,25 C90,10 60,10 50,25 C40,40 10,40 10,25 Z" />
+          </svg>
+          <div class="track-stat" style="top: 30%; left: 20%;">Sector 1: 22.4s</div>
+          <div class="track-stat" style="bottom: 30%; right: 20%;">Sector 2: 30.1s</div>
+          <div class="track-data">
+            <h3>Suzuka Circuit</h3>
+            <p style="font-size: 0.9rem; color: #aaa;">High speed, technical figure-8.</p>
+          </div>
         </div>
-        <div class="glass-card">
-          <div style="font-size: 0.9rem; color: var(--brand-orange); font-weight: bold; margin-bottom: 10px;">Round 2</div>
-          <h3>Donington Park</h3>
-          <p>F3 National Series</p>
-          <p style="font-size: 0.8rem; color: var(--text-secondary);">Result: P2, P3</p>
+        <div class="track-card">
+          <svg class="track-svg" viewBox="0 0 100 50" stroke="var(--brand-orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <path d="M20,40 L20,10 L80,10 C90,10 90,40 80,40 Z" />
+          </svg>
+          <div class="track-stat" style="top: 20%; left: 40%;">Sector 1: 28.9s</div>
+          <div class="track-stat" style="bottom: 20%; right: 30%;">Sector 2: 25.2s</div>
+          <div class="track-data">
+            <h3>Monza Circuit</h3>
+            <p style="font-size: 0.9rem; color: #aaa;">The temple of speed.</p>
+          </div>
         </div>
-        <div class="glass-card">
-          <div style="font-size: 0.9rem; color: var(--brand-orange); font-weight: bold; margin-bottom: 10px;">Round 3</div>
-          <h3>Oulton Park</h3>
-          <p>F3 National Series</p>
-          <p style="font-size: 0.8rem; color: var(--text-secondary);">Upcoming</p>
+        <div class="track-card">
+          <svg class="track-svg" viewBox="0 0 100 50" stroke="var(--brand-orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <path d="M15,25 C15,5 35,5 50,15 C65,25 85,15 85,35 C85,45 65,45 50,35 C35,25 15,45 15,25 Z" />
+          </svg>
+          <div class="track-stat" style="top: 20%; left: 30%;">Sector 1: 27.4s</div>
+          <div class="track-stat" style="bottom: 10%; right: 40%;">Sector 2: 32.8s</div>
+          <div class="track-data">
+            <h3>Spa-Francorchamps</h3>
+            <p style="font-size: 0.9rem; color: #aaa;">Longest track, huge elevation changes.</p>
+          </div>
         </div>
-        <div class="glass-card">
-          <div style="font-size: 0.9rem; color: var(--brand-orange); font-weight: bold; margin-bottom: 10px;">Round 4</div>
-          <h3>Thruxton</h3>
-          <p>F3 National Series</p>
-          <p style="font-size: 0.8rem; color: var(--text-secondary);">Upcoming</p>
+        <div class="track-card">
+          <svg class="track-svg" viewBox="0 0 100 50" stroke="var(--brand-orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <path d="M10,25 L30,10 L70,10 L90,25 L70,40 L30,40 Z" />
+          </svg>
+          <div class="track-stat" style="top: 25%; left: 25%;">Sector 1: 24.1s</div>
+          <div class="track-stat" style="bottom: 25%; right: 25%;">Sector 2: 26.5s</div>
+          <div class="track-data">
+            <h3>Silverstone Circuit</h3>
+            <p style="font-size: 0.9rem; color: #aaa;">Fast, flowing, historic.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -316,3 +458,4 @@
   <script src="assets/js/animations.js"></script>
 </body>
 </html>
+

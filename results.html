@@ -69,7 +69,7 @@
       </a>
             <nav class="nav-menu" id="nav-menu">
         <div class="nav-item-dropdown" style="position: relative; display: inline-block;">
-          <a href="#" class="nav-link active" style="display: flex; align-items: center;">Home <span style="font-size: 0.7em; margin-left: 5px;">&#9660;</span></a>
+          <a href="#" class="nav-link" style="display: flex; align-items: center;">Home <span style="font-size: 0.7em; margin-left: 5px;">&#9660;</span></a>
           <div class="dropdown-content" style="display: none; position: absolute; background: rgba(10, 10, 10, 0.9); min-width: 150px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.8); z-index: 1; border-radius: 4px; border: 1px solid var(--border-color); top: 100%; left: 0; flex-direction: column;">
             <a href="index.html" style="color: var(--text-primary); padding: 12px 16px; text-decoration: none; font-family: var(--font-heading); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s;">Home 1</a>
             <a href="home2.html" style="color: var(--text-primary); padding: 12px 16px; text-decoration: none; font-family: var(--font-heading); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s;">Home 2</a>
@@ -79,7 +79,7 @@
         <a href="services.html" class="nav-link">Services</a>
         <a href="drivers.html" class="nav-link">Drivers</a>
         <a href="calendar.html" class="nav-link">Race Calendar</a>
-        <a href="results.html" class="nav-link">Results</a>
+        <a href="results.html" class="nav-link active">Results</a>
         <a href="merchandise.html" class="nav-link">Merchandise</a>
         <a href="contact.html" class="nav-link">Contact</a>
       </nav>
@@ -179,63 +179,216 @@
     </div>
   </section>
 
-  <!-- 4. Lap Records -->
+  <!-- 4. 3D Floating Podium Showcase -->
   <section class="reveal">
     <div class="container">
-      <h2 style="text-align: center; margin-bottom: 1rem;">Lap Records</h2>
-      <p style="text-align: center; max-width: 600px; margin: 0 auto;">Rewriting history across iconic circuits.</p>
-      
-      <div class="grid-4">
-        <div class="glass-card">
-          <img src="https://images.unsplash.com/photo-1533618485292-1fb4284b7a13?q=80&w=600&auto=format&fit=crop" alt="Circuit 1">
-          <h3>Monaco</h3>
-          <p style="color: var(--brand-orange); font-size: 1.5rem; font-weight: bold;">1:10.810</p>
-          <p style="font-size: 0.8rem;">Set by: Sarah Jenkins (2025)</p>
+      <h2 style="text-align: center; margin-bottom: 1rem;">Podium Triumphs</h2>
+      <p style="text-align: center; max-width: 600px; margin: 0 auto 3rem;">A dimensional look at our top constructor finishes.</p>
+
+      <style>
+        .podium-container {
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
+          height: 400px;
+          perspective: 1000px;
+          gap: 1rem;
+          margin-top: 5rem;
+        }
+        .podium-step {
+          position: relative;
+          width: 150px;
+          transform-style: preserve-3d;
+          transition: transform 0.5s ease;
+          cursor: pointer;
+        }
+        .podium-step:hover {
+          transform: rotateY(15deg) translateZ(30px);
+        }
+        .step-top, .step-front, .step-side {
+          position: absolute;
+          border: 1px solid var(--brand-orange);
+          background: rgba(20,20,20,0.8);
+          backdrop-filter: blur(5px);
+          -webkit-backdrop-filter: blur(5px);
+        }
+        .step-top { width: 150px; height: 150px; transform: rotateX(90deg) translateZ(75px); transform-origin: bottom; box-shadow: inset 0 0 20px rgba(255,69,0,0.3); }
+        .step-front { width: 150px; transform: translateZ(75px); display: flex; justify-content: center; align-items: center; font-size: 3rem; font-weight: bold; color: var(--brand-orange); font-family: var(--font-heading); }
+        .step-side { width: 150px; transform: rotateY(90deg) translateZ(75px); background: rgba(10,10,10,0.9); }
+        
+        .p1 { height: 250px; z-index: 3; }
+        .p2 { height: 180px; z-index: 2; }
+        .p3 { height: 120px; z-index: 1; }
+        
+        .p1 .step-front { height: 250px; }
+        .p2 .step-front { height: 180px; }
+        .p3 .step-front { height: 120px; }
+        
+        .p1 .step-side { height: 250px; }
+        .p2 .step-side { height: 180px; }
+        .p3 .step-side { height: 120px; }
+
+        .podium-hologram {
+          position: absolute;
+          bottom: 100%;
+          left: 50%;
+          transform: translateX(-50%) translateZ(50px);
+          text-align: center;
+          width: max-content;
+          opacity: 0;
+          transition: all 0.5s ease;
+          pointer-events: none;
+        }
+        .podium-step:hover .podium-hologram {
+          opacity: 1;
+          transform: translateX(-50%) translateZ(50px) translateY(-20px);
+        }
+        .podium-hologram h4 { margin: 0; color: #fff; font-size: 1.2rem; text-shadow: 0 0 10px var(--brand-orange-glow); }
+        .podium-hologram p { margin: 0; color: var(--brand-orange); font-size: 0.9rem; }
+        @media (max-width: 768px) {
+          .podium-container { transform: scale(0.6); margin-top: 2rem; }
+        }
+      </style>
+
+      <div class="podium-container">
+        <!-- P2 -->
+        <div class="podium-step p2">
+          <div class="podium-hologram">
+            <h4>Italian GP</h4>
+            <p>Sarah Jenkins</p>
+          </div>
+          <div class="step-top"></div>
+          <div class="step-front">2</div>
+          <div class="step-side"></div>
         </div>
-        <div class="glass-card">
-          <img src="https://images.unsplash.com/photo-1563212891-b6aab0afb79a?q=80&w=600&auto=format&fit=crop" alt="Circuit 2">
-          <h3>Silverstone</h3>
-          <p style="color: var(--brand-orange); font-size: 1.5rem; font-weight: bold;">1:24.303</p>
-          <p style="font-size: 0.8rem;">Set by: Alex Mercer (2024)</p>
+        <!-- P1 -->
+        <div class="podium-step p1">
+          <div class="podium-hologram">
+            <h4>Singapore GP</h4>
+            <p>Alex Mercer</p>
+          </div>
+          <div class="step-top"></div>
+          <div class="step-front">1</div>
+          <div class="step-side"></div>
         </div>
-        <div class="glass-card">
-          <img src="https://images.unsplash.com/photo-1541443131876-44b0322278fd?q=80&w=600&auto=format&fit=crop" alt="Circuit 3">
-          <h3>Monza</h3>
-          <p style="color: var(--brand-orange); font-size: 1.5rem; font-weight: bold;">1:18.887</p>
-          <p style="font-size: 0.8rem;">Set by: Alex Mercer (2025)</p>
-        </div>
-        <div class="glass-card">
-          <img src="https://images.unsplash.com/photo-1629844837424-d2e3077759a2?q=80&w=600&auto=format&fit=crop" alt="Circuit 4">
-          <h3>Suzuka</h3>
-          <p style="color: var(--brand-orange); font-size: 1.5rem; font-weight: bold;">1:27.064</p>
-          <p style="font-size: 0.8rem;">Set by: Sarah Jenkins (2023)</p>
+        <!-- P3 -->
+        <div class="podium-step p3">
+          <div class="podium-hologram">
+            <h4>Belgian GP</h4>
+            <p>David Russo</p>
+          </div>
+          <div class="step-top"></div>
+          <div class="step-front">3</div>
+          <div class="step-side"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 5. Team Statistics -->
+  <!-- 5. Dynamic 3D Accordion Timeline -->
   <section class="reveal" style="background: var(--bg-secondary);">
     <div class="container">
-      <h2 style="text-align: center; margin-bottom: 1rem;">Team Statistics</h2>
-      <p style="text-align: center; max-width: 600px; margin: 0 auto;">The raw numbers behind our season's performance.</p>
+      <h2 style="text-align: center; margin-bottom: 1rem;">Chronological Milestones</h2>
+      <p style="text-align: center; max-width: 600px; margin: 0 auto 3rem;">A 3D perspective scroll through our historic season.</p>
       
-      <div class="grid-4">
-        <div class="glass-card" style="text-align: center; justify-content: center;">
-          <div style="font-size: 3rem; color: var(--brand-orange); font-family: var(--font-heading); font-weight: 700;">98.5%</div>
-          <h3>Reliability Rate</h3>
+      <style>
+        .timeline-3d {
+          display: flex;
+          gap: 1rem;
+          perspective: 2000px;
+          height: 400px;
+        }
+        .timeline-card {
+          flex: 1;
+          position: relative;
+          background: rgba(255,255,255,0.05);
+          border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 12px;
+          transform-style: preserve-3d;
+          transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+          cursor: pointer;
+          overflow: hidden;
+          display: flex;
+          align-items: flex-end;
+          padding: 2rem;
+        }
+        .timeline-card::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background-size: cover;
+          background-position: center;
+          opacity: 0.4;
+          transition: opacity 0.6s;
+          transform: translateZ(-1px);
+        }
+        .timeline-card:nth-child(1)::before { background-image: url('https://images.unsplash.com/photo-1541443131876-44b0322278fd?q=80&w=800&auto=format&fit=crop'); }
+        .timeline-card:nth-child(2)::before { background-image: url('https://images.unsplash.com/photo-1533618485292-1fb4284b7a13?q=80&w=800&auto=format&fit=crop'); }
+        .timeline-card:nth-child(3)::before { background-image: url('https://images.unsplash.com/photo-1563212891-b6aab0afb79a?q=80&w=800&auto=format&fit=crop'); }
+        
+        .timeline-card:hover {
+          flex: 3;
+          transform: translateZ(50px) rotateX(5deg);
+          border-color: var(--brand-orange);
+          box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+        }
+        .timeline-card:hover::before { opacity: 0.8; }
+        
+        .timeline-content {
+          transform: translateZ(30px);
+          opacity: 0;
+          transition: opacity 0.4s 0.2s;
+          position: relative;
+          z-index: 2;
+        }
+        .timeline-card:hover .timeline-content { opacity: 1; }
+        
+        .timeline-year {
+          position: absolute;
+          top: 2rem; left: 2rem;
+          font-family: var(--font-heading);
+          font-size: 2rem;
+          color: var(--brand-orange);
+          font-weight: bold;
+          writing-mode: vertical-rl;
+          transform: rotate(180deg);
+          transition: all 0.6s;
+          z-index: 2;
+          text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
+        .timeline-card:hover .timeline-year {
+          writing-mode: horizontal-tb;
+          transform: rotate(0deg);
+        }
+        .timeline-content h3 { font-size: 1.5rem; margin-bottom: 0.5rem; text-shadow: 0 2px 5px rgba(0,0,0,0.8); }
+        .timeline-content p { font-size: 0.9rem; text-shadow: 0 1px 3px rgba(0,0,0,0.8); }
+        @media (max-width: 768px) {
+          .timeline-3d { flex-direction: column; height: 800px; }
+          .timeline-year { writing-mode: horizontal-tb; transform: rotate(0deg); }
+        }
+      </style>
+
+      <div class="timeline-3d">
+        <div class="timeline-card">
+          <div class="timeline-year">2023</div>
+          <div class="timeline-content">
+            <h3>The Rebuild</h3>
+            <p>A new aerodynamic philosophy sets the stage for future dominance.</p>
+          </div>
         </div>
-        <div class="glass-card" style="text-align: center; justify-content: center;">
-          <div style="font-size: 3rem; color: var(--brand-orange); font-family: var(--font-heading); font-weight: 700;">8</div>
-          <h3>Fastest Laps</h3>
+        <div class="timeline-card">
+          <div class="timeline-year">2024</div>
+          <div class="timeline-content">
+            <h3>Return to Form</h3>
+            <p>Securing 5 race victories and a runner-up finish in the Constructors.</p>
+          </div>
         </div>
-        <div class="glass-card" style="text-align: center; justify-content: center;">
-          <div style="font-size: 3rem; color: var(--brand-orange); font-family: var(--font-heading); font-weight: 700;">412</div>
-          <h3>Laps Led</h3>
-        </div>
-        <div class="glass-card" style="text-align: center; justify-content: center;">
-          <div style="font-size: 3rem; color: var(--brand-orange); font-family: var(--font-heading); font-weight: 700;">2.1s</div>
-          <h3>Avg Pit Stop Time</h3>
+        <div class="timeline-card">
+          <div class="timeline-year">2025</div>
+          <div class="timeline-content">
+            <h3>Championship Glory</h3>
+            <p>Absolute dominance yielding both Drivers' and Constructors' titles.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -316,3 +469,4 @@
   <script src="assets/js/animations.js"></script>
 </body>
 </html>
+

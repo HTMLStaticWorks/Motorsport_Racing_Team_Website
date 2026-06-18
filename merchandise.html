@@ -69,7 +69,7 @@
       </a>
             <nav class="nav-menu" id="nav-menu">
         <div class="nav-item-dropdown" style="position: relative; display: inline-block;">
-          <a href="#" class="nav-link active" style="display: flex; align-items: center;">Home <span style="font-size: 0.7em; margin-left: 5px;">&#9660;</span></a>
+          <a href="#" class="nav-link" style="display: flex; align-items: center;">Home <span style="font-size: 0.7em; margin-left: 5px;">&#9660;</span></a>
           <div class="dropdown-content" style="display: none; position: absolute; background: rgba(10, 10, 10, 0.9); min-width: 150px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.8); z-index: 1; border-radius: 4px; border: 1px solid var(--border-color); top: 100%; left: 0; flex-direction: column;">
             <a href="index.html" style="color: var(--text-primary); padding: 12px 16px; text-decoration: none; font-family: var(--font-heading); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s;">Home 1</a>
             <a href="home2.html" style="color: var(--text-primary); padding: 12px 16px; text-decoration: none; font-family: var(--font-heading); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s;">Home 2</a>
@@ -80,7 +80,7 @@
         <a href="drivers.html" class="nav-link">Drivers</a>
         <a href="calendar.html" class="nav-link">Race Calendar</a>
         <a href="results.html" class="nav-link">Results</a>
-        <a href="merchandise.html" class="nav-link">Merchandise</a>
+        <a href="merchandise.html" class="nav-link active">Merchandise</a>
         <a href="contact.html" class="nav-link">Contact</a>
       </nav>
       <style>
@@ -144,71 +144,174 @@
     </div>
   </section>
 
-  <!-- 3. Team Accessories -->
-  <section class="reveal" style="background: var(--bg-secondary);">
+  <!-- 3. 3D Product Pedestal Showcase -->
+  <section class="reveal" style="background: var(--bg-secondary); overflow: hidden;">
     <div class="container">
-      <h2 style="text-align: center; margin-bottom: 1rem;">Team Accessories</h2>
-      <p style="text-align: center; max-width: 600px; margin: 0 auto;">Complete your race day look with official gear.</p>
-      
-      <div class="grid-4">
-        <div class="glass-card" style="text-align: center;">
-          <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=600&auto=format&fit=crop" alt="Team Cap" style="aspect-ratio: 1/1; object-fit: cover; border-radius: 8px;">
-          <h3>Official Team Cap</h3>
-          <p style="color: var(--brand-orange); font-size: 1.2rem; font-weight: bold;">$35.00</p>
-          <a href="#" class="btn btn-secondary" style="width: 100%; margin-top: auto; height: 40px; font-size: 0.8rem;">Add to Cart</a>
+      <h2 style="text-align: center; margin-bottom: 1rem;">Exclusive Gear</h2>
+      <p style="text-align: center; max-width: 600px; margin: 0 auto 3rem;">Hover to inspect our premium accessories in 3D space.</p>
+
+      <style>
+        .pedestal-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 2rem;
+          perspective: 1500px;
+        }
+        .pedestal-item {
+          position: relative;
+          height: 350px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transform-style: preserve-3d;
+          transition: transform 0.8s ease;
+          cursor: pointer;
+        }
+        .pedestal-item:hover {
+          transform: translateZ(50px) rotateY(-10deg);
+        }
+        .pedestal-base {
+          position: absolute;
+          bottom: 20px;
+          width: 200px;
+          height: 60px;
+          background: rgba(40,40,40,0.8);
+          border-radius: 50%;
+          transform: rotateX(75deg);
+          box-shadow: inset 0 0 20px rgba(255,69,0,0.3), 0 20px 30px rgba(0,0,0,0.8);
+          border: 1px solid rgba(255,69,0,0.5);
+          transition: all 0.5s ease;
+        }
+        .pedestal-item:hover .pedestal-base {
+          box-shadow: inset 0 0 30px rgba(255,69,0,0.6), 0 30px 40px rgba(0,0,0,0.9);
+          background: rgba(60,60,60,0.9);
+        }
+        .pedestal-img {
+          position: absolute;
+          bottom: 50px;
+          width: 180px;
+          height: 180px;
+          object-fit: cover;
+          border-radius: 12px;
+          transform: translateZ(30px);
+          filter: drop-shadow(0 15px 15px rgba(0,0,0,0.8));
+          transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .pedestal-item:hover .pedestal-img {
+          transform: translateZ(100px) translateY(-20px) rotateY(15deg);
+        }
+        .pedestal-info {
+          position: absolute;
+          bottom: -20px;
+          text-align: center;
+          transform: translateZ(40px);
+          opacity: 0;
+          transition: opacity 0.4s ease;
+          pointer-events: none;
+        }
+        .pedestal-item:hover .pedestal-info { opacity: 1; }
+        .pedestal-info h3 { color: #fff; margin: 0 0 5px; font-size: 1.1rem; }
+        .pedestal-info p { color: var(--brand-orange); margin: 0; font-weight: bold; }
+        @media (max-width: 768px) { .pedestal-grid { grid-template-columns: 1fr; gap: 4rem; } }
+      </style>
+
+      <div class="pedestal-grid">
+        <div class="pedestal-item">
+          <div class="pedestal-base"></div>
+          <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=400&auto=format&fit=crop" class="pedestal-img" alt="Cap">
+          <div class="pedestal-info">
+            <h3>Official Team Cap</h3>
+            <p>$35.00</p>
+          </div>
         </div>
-        <div class="glass-card" style="text-align: center;">
-          <img src="https://images.unsplash.com/photo-1559416523-140ddc3d238c?q=80&w=600&auto=format&fit=crop" alt="Backpack" style="aspect-ratio: 1/1; object-fit: cover; border-radius: 8px;">
-          <h3>Paddock Backpack</h3>
-          <p style="color: var(--brand-orange); font-size: 1.2rem; font-weight: bold;">$120.00</p>
-          <a href="#" class="btn btn-secondary" style="width: 100%; margin-top: auto; height: 40px; font-size: 0.8rem;">Add to Cart</a>
+        <div class="pedestal-item">
+          <div class="pedestal-base"></div>
+          <img src="https://images.unsplash.com/photo-1559416523-140ddc3d238c?q=80&w=400&auto=format&fit=crop" class="pedestal-img" alt="Backpack">
+          <div class="pedestal-info">
+            <h3>Paddock Backpack</h3>
+            <p>$120.00</p>
+          </div>
         </div>
-        <div class="glass-card" style="text-align: center;">
-          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600&auto=format&fit=crop" alt="Watch" style="aspect-ratio: 1/1; object-fit: cover; border-radius: 8px;">
-          <h3>Chronograph Watch</h3>
-          <p style="color: var(--brand-orange); font-size: 1.2rem; font-weight: bold;">$350.00</p>
-          <a href="#" class="btn btn-secondary" style="width: 100%; margin-top: auto; height: 40px; font-size: 0.8rem;">Add to Cart</a>
-        </div>
-        <div class="glass-card" style="text-align: center;">
-          <img src="https://images.unsplash.com/photo-1575428652377-a2d80b2273fd?q=80&w=600&auto=format&fit=crop" alt="Sunglasses" style="aspect-ratio: 1/1; object-fit: cover; border-radius: 8px;">
-          <h3>Pitlane Sunglasses</h3>
-          <p style="color: var(--brand-orange); font-size: 1.2rem; font-weight: bold;">$180.00</p>
-          <a href="#" class="btn btn-secondary" style="width: 100%; margin-top: auto; height: 40px; font-size: 0.8rem;">Add to Cart</a>
+        <div class="pedestal-item">
+          <div class="pedestal-base"></div>
+          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=400&auto=format&fit=crop" class="pedestal-img" alt="Watch">
+          <div class="pedestal-info">
+            <h3>Chronograph Watch</h3>
+            <p>$350.00</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 4. Collectibles -->
+  <!-- 4. Glassmorphism 3D Cover Flow -->
   <section class="reveal">
     <div class="container">
       <h2 style="text-align: center; margin-bottom: 1rem;">Limited Collectibles</h2>
-      <p style="text-align: center; max-width: 600px; margin: 0 auto;">Authentic scale models and signed memorabilia.</p>
+      <p style="text-align: center; max-width: 600px; margin: 0 auto 3rem;">Rare and signed memorabilia for the ultimate collector.</p>
       
-      <div class="grid-4">
-        <div class="glass-card" style="text-align: center;">
-          <img src="https://images.unsplash.com/photo-1629844837424-d2e3077759a2?q=80&w=600&auto=format&fit=crop" alt="Scale Model 1:18" style="aspect-ratio: 1/1; object-fit: cover; border-radius: 8px;">
-          <h3>1:18 Scale Model RT-25</h3>
-          <p style="color: var(--brand-orange); font-size: 1.2rem; font-weight: bold;">$195.00</p>
-          <a href="#" class="btn btn-secondary" style="width: 100%; margin-top: auto; height: 40px; font-size: 0.8rem;">Add to Cart</a>
+      <style>
+        .cover-flow {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          perspective: 1200px;
+          height: 350px;
+          position: relative;
+        }
+        .cover-item {
+          position: absolute;
+          width: 220px;
+          height: 280px;
+          background: rgba(255,255,255,0.05);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 12px;
+          transition: all 0.5s ease;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 1rem;
+          cursor: pointer;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .cover-item img {
+          width: 100%;
+          height: 150px;
+          object-fit: cover;
+          border-radius: 8px;
+          margin-bottom: 1rem;
+        }
+        .cover-item h3 { font-size: 1rem; text-align: center; margin-bottom: 5px; }
+        .cover-item p { color: var(--brand-orange); font-weight: bold; margin: 0; }
+        
+        .cover-item:nth-child(1) { transform: translateX(-180px) translateZ(-100px) rotateY(30deg); opacity: 0.6; z-index: 1; }
+        .cover-item:nth-child(2) { transform: translateX(0) translateZ(50px); opacity: 1; z-index: 3; border-color: var(--brand-orange); box-shadow: 0 15px 40px rgba(255,69,0,0.2); }
+        .cover-item:nth-child(3) { transform: translateX(180px) translateZ(-100px) rotateY(-30deg); opacity: 0.6; z-index: 1; }
+        
+        .cover-flow:hover .cover-item:nth-child(1) { transform: translateX(-200px) translateZ(-80px) rotateY(20deg); opacity: 0.8; }
+        .cover-flow:hover .cover-item:nth-child(3) { transform: translateX(200px) translateZ(-80px) rotateY(-20deg); opacity: 0.8; }
+        @media (max-width: 768px) {
+          .cover-flow { transform: scale(0.7); }
+        }
+      </style>
+
+      <div class="cover-flow">
+        <div class="cover-item">
+          <img src="https://images.unsplash.com/photo-1629844837424-d2e3077759a2?q=80&w=400&auto=format&fit=crop" alt="Model">
+          <h3>1:18 Scale Model</h3>
+          <p>$195.00</p>
         </div>
-        <div class="glass-card" style="text-align: center;">
-          <img src="https://images.unsplash.com/photo-1542385151-efd9000785a0?q=80&w=600&auto=format&fit=crop" alt="Signed Helmet" style="aspect-ratio: 1/1; object-fit: cover; border-radius: 8px;">
+        <div class="cover-item">
+          <img src="https://images.unsplash.com/photo-1542385151-efd9000785a0?q=80&w=400&auto=format&fit=crop" alt="Helmet">
           <h3>Mini Helmet - Mercer</h3>
-          <p style="color: var(--brand-orange); font-size: 1.2rem; font-weight: bold;">$85.00</p>
-          <a href="#" class="btn btn-secondary" style="width: 100%; margin-top: auto; height: 40px; font-size: 0.8rem;">Add to Cart</a>
+          <p>$85.00</p>
         </div>
-        <div class="glass-card" style="text-align: center;">
-          <img src="https://images.unsplash.com/photo-1533158307587-828f0a76cf46?q=80&w=600&auto=format&fit=crop" alt="Art Print" style="aspect-ratio: 1/1; object-fit: cover; border-radius: 8px;">
-          <h3>Championship Art Print</h3>
-          <p style="color: var(--brand-orange); font-size: 1.2rem; font-weight: bold;">$55.00</p>
-          <a href="#" class="btn btn-secondary" style="width: 100%; margin-top: auto; height: 40px; font-size: 0.8rem;">Add to Cart</a>
-        </div>
-        <div class="glass-card" style="text-align: center;">
-          <img src="https://images.unsplash.com/photo-1563212891-b6aab0afb79a?q=80&w=600&auto=format&fit=crop" alt="Car Part" style="aspect-ratio: 1/1; object-fit: cover; border-radius: 8px;">
-          <h3>Authentic Carbon Part</h3>
-          <p style="color: var(--brand-orange); font-size: 1.2rem; font-weight: bold;">$1,200.00</p>
-          <a href="#" class="btn btn-secondary" style="width: 100%; margin-top: auto; height: 40px; font-size: 0.8rem;">Add to Cart</a>
+        <div class="cover-item">
+          <img src="https://images.unsplash.com/photo-1533158307587-828f0a76cf46?q=80&w=400&auto=format&fit=crop" alt="Print">
+          <h3>Championship Art</h3>
+          <p>$55.00</p>
         </div>
       </div>
     </div>
@@ -324,3 +427,4 @@
   <script src="assets/js/animations.js"></script>
 </body>
 </html>
+

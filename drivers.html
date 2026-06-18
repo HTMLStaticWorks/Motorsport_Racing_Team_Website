@@ -69,7 +69,7 @@
       </a>
             <nav class="nav-menu" id="nav-menu">
         <div class="nav-item-dropdown" style="position: relative; display: inline-block;">
-          <a href="#" class="nav-link active" style="display: flex; align-items: center;">Home <span style="font-size: 0.7em; margin-left: 5px;">&#9660;</span></a>
+          <a href="#" class="nav-link" style="display: flex; align-items: center;">Home <span style="font-size: 0.7em; margin-left: 5px;">&#9660;</span></a>
           <div class="dropdown-content" style="display: none; position: absolute; background: rgba(10, 10, 10, 0.9); min-width: 150px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.8); z-index: 1; border-radius: 4px; border: 1px solid var(--border-color); top: 100%; left: 0; flex-direction: column;">
             <a href="index.html" style="color: var(--text-primary); padding: 12px 16px; text-decoration: none; font-family: var(--font-heading); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s;">Home 1</a>
             <a href="home2.html" style="color: var(--text-primary); padding: 12px 16px; text-decoration: none; font-family: var(--font-heading); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s;">Home 2</a>
@@ -77,7 +77,7 @@
         </div>
         <a href="about.html" class="nav-link">About</a>
         <a href="services.html" class="nav-link">Services</a>
-        <a href="drivers.html" class="nav-link">Drivers</a>
+        <a href="drivers.html" class="nav-link active">Drivers</a>
         <a href="calendar.html" class="nav-link">Race Calendar</a>
         <a href="results.html" class="nav-link">Results</a>
         <a href="merchandise.html" class="nav-link">Merchandise</a>
@@ -115,30 +115,43 @@
       <h2 style="text-align: center; margin-bottom: 1rem;">Lead Drivers</h2>
       <p style="text-align: center; max-width: 600px; margin: 0 auto;">Our primary contenders for the World Championship.</p>
       
-      <div class="grid-4">
-        <div class="glass-card" style="text-align: center;">
-          <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=600&auto=format&fit=crop" alt="Driver 1" style="aspect-ratio: 3/4;">
-          <h3 style="margin-bottom: 0.5rem;">Alex Mercer</h3>
-          <p style="color: var(--brand-orange); font-size: 0.9rem; margin-bottom: 10px;">Car #07</p>
-          <p style="font-size: 0.8rem;">The 3-time defending World Champion, known for absolute precision and aggressive overtakes.</p>
+      <style>
+        .leader-img-wrapper {
+          line-height: 0;
+          perspective: 1000px;
+          position: relative;
+        }
+        .leader-img {
+          width: 100%;
+          height: 100%;
+          aspect-ratio: 3/4;
+          object-fit: cover;
+          display: block;
+          border-radius: 0;
+          transform-style: preserve-3d;
+          transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.6s;
+          transform-origin: center center;
+        }
+        .leader-img-wrapper:hover {
+          z-index: 10;
+        }
+        .leader-img-wrapper:hover .leader-img {
+          transform: scale(1.05) rotateX(5deg) rotateY(-5deg) translateZ(30px);
+          filter: brightness(1.1) drop-shadow(0 20px 30px rgba(0,0,0,0.8));
+        }
+      </style>
+      <div class="grid-4" style="gap: 0;">
+        <div class="leader-img-wrapper">
+          <img src="assets/images/leader1.png" alt="Driver 1" class="leader-img">
         </div>
-        <div class="glass-card" style="text-align: center;">
-          <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=600&auto=format&fit=crop" alt="Driver 2" style="aspect-ratio: 3/4;">
-          <h3 style="margin-bottom: 0.5rem;">Sarah Jenkins</h3>
-          <p style="color: var(--brand-orange); font-size: 0.9rem; margin-bottom: 10px;">Car #14</p>
-          <p style="font-size: 0.8rem;">Qualifying specialist holding 20+ lap records across the current racing calendar.</p>
+        <div class="leader-img-wrapper">
+          <img src="assets/images/leader2.png" alt="Driver 2" class="leader-img">
         </div>
-        <div class="glass-card" style="text-align: center;">
-          <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?q=80&w=600&auto=format&fit=crop" alt="Driver 3" style="aspect-ratio: 3/4;">
-          <h3 style="margin-bottom: 0.5rem;">David Russo</h3>
-          <p style="color: var(--brand-orange); font-size: 0.9rem; margin-bottom: 10px;">Car #22</p>
-          <p style="font-size: 0.8rem;">Endurance master, excelling in changing weather conditions and long-stint tire management.</p>
+        <div class="leader-img-wrapper">
+          <img src="assets/images/leader3.png" alt="Driver 3" class="leader-img">
         </div>
-        <div class="glass-card" style="text-align: center;">
-          <img src="https://images.unsplash.com/photo-1542385151-efd9000785a0?q=80&w=600&auto=format&fit=crop" alt="Driver 4" style="aspect-ratio: 3/4;">
-          <h3 style="margin-bottom: 0.5rem;">Elena Rostova</h3>
-          <p style="color: var(--brand-orange); font-size: 0.9rem; margin-bottom: 10px;">Car #99</p>
-          <p style="font-size: 0.8rem;">Tactical genius, frequently outsmarting rivals through superior pit strategy and race pace.</p>
+        <div class="leader-img-wrapper">
+          <img src="assets/images/leader4.png" alt="Driver 4" class="leader-img">
         </div>
       </div>
     </div>
@@ -152,90 +165,223 @@
       
       <div class="grid-4">
         <div class="glass-card" style="display: flex; flex-direction: row; align-items: center; gap: 15px;">
-          <img src="https://images.unsplash.com/photo-1506469717960-433cebe3f181?q=80&w=200&auto=format&fit=crop" alt="Junior 1" style="width: 80px; height: 80px; border-radius: 50%; margin: 0;">
+          <img src="assets/images/junior1.png" alt="Formula 1" style="width: 80px; height: 80px; border-radius: 50%; margin: 0; object-fit: cover;">
           <div>
-            <h4 style="margin-bottom: 5px;">Marcus Vance</h4>
-            <p style="font-size: 0.8rem; margin: 0; color: var(--brand-orange);">Formula 2 Lead</p>
+            <p style="font-size: 1rem; margin: 0; color: var(--brand-orange); font-weight: bold;">Formula 1</p>
           </div>
         </div>
         <div class="glass-card" style="display: flex; flex-direction: row; align-items: center; gap: 15px;">
-          <img src="https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?q=80&w=200&auto=format&fit=crop" alt="Junior 2" style="width: 80px; height: 80px; border-radius: 50%; margin: 0;">
+          <img src="assets/images/junior2.png" alt="Formula 2" style="width: 80px; height: 80px; border-radius: 50%; margin: 0; object-fit: cover;">
           <div>
-            <h4 style="margin-bottom: 5px;">Chloe Kim</h4>
-            <p style="font-size: 0.8rem; margin: 0; color: var(--brand-orange);">Formula 3 Champion</p>
+            <p style="font-size: 1rem; margin: 0; color: var(--brand-orange); font-weight: bold;">Formula 2</p>
           </div>
         </div>
         <div class="glass-card" style="display: flex; flex-direction: row; align-items: center; gap: 15px;">
-          <img src="https://images.unsplash.com/photo-1533618485292-1fb4284b7a13?q=80&w=200&auto=format&fit=crop" alt="Junior 3" style="width: 80px; height: 80px; border-radius: 50%; margin: 0;">
+          <img src="assets/images/junior3.png" alt="Formula 3" style="width: 80px; height: 80px; border-radius: 50%; margin: 0; object-fit: cover;">
           <div>
-            <h4 style="margin-bottom: 5px;">James Cole</h4>
-            <p style="font-size: 0.8rem; margin: 0; color: var(--brand-orange);">Karting Prodigy</p>
+            <p style="font-size: 1rem; margin: 0; color: var(--brand-orange); font-weight: bold;">Formula 3</p>
           </div>
         </div>
         <div class="glass-card" style="display: flex; flex-direction: row; align-items: center; gap: 15px;">
-          <img src="https://images.unsplash.com/photo-1563212891-b6aab0afb79a?q=80&w=200&auto=format&fit=crop" alt="Junior 4" style="width: 80px; height: 80px; border-radius: 50%; margin: 0;">
+          <img src="assets/images/junior4.png" alt="Formula 4" style="width: 80px; height: 80px; border-radius: 50%; margin: 0; object-fit: cover;">
           <div>
-            <h4 style="margin-bottom: 5px;">Liam Smith</h4>
-            <p style="font-size: 0.8rem; margin: 0; color: var(--brand-orange);">Simulator Test Driver</p>
+            <p style="font-size: 1rem; margin: 0; color: var(--brand-orange); font-weight: bold;">Formula 4</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 4. Driver Statistics -->
+  <!-- 4. Holographic Driver Carousel -->
   <section class="reveal">
     <div class="container">
-      <h2 style="text-align: center; margin-bottom: 1rem;">Driver Statistics</h2>
-      <p style="text-align: center; max-width: 600px; margin: 0 auto;">Cumulative career performance metrics of our lead drivers.</p>
+      <h2 style="text-align: center; margin-bottom: 1rem;">Holographic Roster</h2>
+      <p style="text-align: center; max-width: 600px; margin: 0 auto 3rem;">Experience our driver profiles in 3D perspective.</p>
       
-      <div class="grid-4">
-        <div class="glass-card" style="text-align: center; justify-content: center;">
-          <div style="font-size: 3rem; color: var(--brand-orange); font-family: var(--font-heading); font-weight: 700;">85</div>
-          <h3>Total Podiums</h3>
+      <style>
+        .holo-carousel {
+          display: flex;
+          justify-content: center;
+          gap: 2rem;
+          flex-wrap: wrap;
+          perspective: 1500px;
+        }
+        .holo-card {
+          width: 280px;
+          height: 400px;
+          position: relative;
+          transform-style: preserve-3d;
+          transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          cursor: pointer;
+        }
+        .holo-card:hover {
+          transform: rotateY(15deg) rotateX(10deg);
+        }
+        .holo-card-bg {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          border-radius: 16px;
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+          transform: translateZ(0);
+          overflow: hidden;
+        }
+        .holo-card-img {
+          position: absolute;
+          bottom: 10%;
+          left: 50%;
+          transform: translateX(-50%) translateZ(60px);
+          width: 180px;
+          transition: transform 0.5s ease;
+          pointer-events: none;
+        }
+        .holo-card:hover .holo-card-img {
+          transform: translateX(-50%) translateZ(100px) scale(1.1);
+          filter: drop-shadow(0 20px 20px rgba(255,69,0,0.5));
+        }
+        .holo-card-content {
+          position: absolute;
+          bottom: 20px;
+          left: 20px;
+          transform: translateZ(40px);
+          color: #fff;
+        }
+        .holo-card-title {
+          font-family: var(--font-heading);
+          font-size: 1.5rem;
+          margin: 0;
+          color: var(--brand-orange);
+          text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
+        .holo-card-subtitle {
+          font-size: 0.9rem;
+          margin: 0;
+          opacity: 0.8;
+        }
+        @media (max-width: 768px) {
+          .holo-carousel { flex-direction: column; align-items: center; }
+        }
+      </style>
+      
+      <div class="holo-carousel">
+        <div class="holo-card">
+          <div class="holo-card-bg">
+            <img src="assets/images/championship.png" style="object-fit:cover; width: 100%; height: 100%; opacity: 0.6;" alt="Champion">
+          </div>
+          <img src="https://img.icons8.com/nolan/256/trophy.png" class="holo-card-img" alt="Icon">
+          <div class="holo-card-content">
+            <h3 class="holo-card-title">World Champion</h3>
+          </div>
         </div>
-        <div class="glass-card" style="text-align: center; justify-content: center;">
-          <div style="font-size: 3rem; color: var(--brand-orange); font-family: var(--font-heading); font-weight: 700;">42</div>
-          <h3>Grand Prix Wins</h3>
+        <div class="holo-card">
+          <div class="holo-card-bg">
+            <img src="assets/images/qualifying.png" style="object-fit:cover; width: 100%; height: 100%; opacity: 0.6;" alt="Qualifying Master">
+          </div>
+          <img src="https://img.icons8.com/nolan/256/speed.png" class="holo-card-img" alt="Icon">
+          <div class="holo-card-content">
+            <h3 class="holo-card-title">Qualifying Master</h3>
+          </div>
         </div>
-        <div class="glass-card" style="text-align: center; justify-content: center;">
-          <div style="font-size: 3rem; color: var(--brand-orange); font-family: var(--font-heading); font-weight: 700;">68</div>
-          <h3>Pole Positions</h3>
+        <div class="holo-card">
+          <div class="holo-card-bg">
+            <img src="assets/images/Endurance Specialist.png" style="object-fit:cover; width: 100%; height: 100%; opacity: 0.6;" alt="Endurance Specialist">
+          </div>
+          <img src="https://img.icons8.com/nolan/256/steering-wheel.png" class="holo-card-img" alt="Icon">
+          <div class="holo-card-content">
+            <h3 class="holo-card-title">Endurance Specialist</h3>
+          </div>
         </div>
-        <div class="glass-card" style="text-align: center; justify-content: center;">
-          <div style="font-size: 3rem; color: var(--brand-orange); font-family: var(--font-heading); font-weight: 700;">4</div>
-          <h3>World Championships</h3>
+        <div class="holo-card">
+          <div class="holo-card-bg">
+            <img src="assets/images/Tactical Genius.png" style="object-fit:cover; width: 100%; height: 100%; opacity: 0.6;" alt="Tactical Genius">
+          </div>
+          <img src="https://img.icons8.com/nolan/256/settings.png" class="holo-card-img" alt="Icon">
+          <div class="holo-card-content">
+            <h3 class="holo-card-title">Tactical Genius</h3>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 5. Driver Achievements -->
-  <section class="reveal" style="background: var(--bg-secondary);">
+  <!-- 5. Isometric Telemetry Dashboard -->
+  <section class="reveal" style="background: var(--bg-secondary); overflow: hidden;">
     <div class="container">
-      <h2 style="text-align: center; margin-bottom: 1rem;">Recent Achievements</h2>
-      <p style="text-align: center; max-width: 600px; margin: 0 auto;">Celebrating our drivers' most recent milestones.</p>
-      
-      <div class="grid-4">
-        <div class="glass-card">
-          <div style="color: var(--brand-orange); margin-bottom: 10px; font-weight: bold;">2025 Season</div>
-          <h3 style="font-size: 1.2rem;">Drivers' Championship</h3>
-          <p style="font-size: 0.9rem;">Alex Mercer claims his third consecutive world title in a thrilling season finale.</p>
-        </div>
-        <div class="glass-card">
-          <div style="color: var(--brand-orange); margin-bottom: 10px; font-weight: bold;">Monaco 2025</div>
-          <h3 style="font-size: 1.2rem;">Street Circuit Master</h3>
-          <p style="font-size: 0.9rem;">Sarah Jenkins shatters the all-time lap record during Saturday qualifying.</p>
-        </div>
-        <div class="glass-card">
-          <div style="color: var(--brand-orange); margin-bottom: 10px; font-weight: bold;">Le Mans 2024</div>
-          <h3 style="font-size: 1.2rem;">Endurance Victory</h3>
-          <p style="font-size: 0.9rem;">David Russo leads the team to a historic 1-2 finish in the grueling 24-hour race.</p>
-        </div>
-        <div class="glass-card">
-          <div style="color: var(--brand-orange); margin-bottom: 10px; font-weight: bold;">Rookie Year 2024</div>
-          <h3 style="font-size: 1.2rem;">Rookie of the Year</h3>
-          <p style="font-size: 0.9rem;">Elena Rostova secures Rookie of the Year honors with 4 podium finishes.</p>
+      <h2 style="text-align: center; margin-bottom: 1rem;">Live Telemetry</h2>
+      <p style="text-align: center; max-width: 600px; margin: 0 auto 3rem;">Real-time performance data rendered in true 3D isometric space.</p>
+
+      <style>
+        .iso-dashboard {
+          position: relative;
+          height: 450px;
+          perspective: 2000px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 2rem;
+        }
+        .iso-grid {
+          position: relative;
+          width: 600px;
+          height: 300px;
+          transform-style: preserve-3d;
+          transform: rotateX(60deg) rotateZ(-45deg);
+          transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .iso-dashboard:hover .iso-grid {
+          transform: rotateX(55deg) rotateZ(-35deg);
+        }
+        .iso-panel {
+          position: absolute;
+          background: rgba(20, 20, 20, 0.8);
+          border: 1px solid var(--brand-orange);
+          box-shadow: inset 0 0 20px rgba(255, 69, 0, 0.1), 0 15px 35px rgba(0,0,0,0.8);
+          border-radius: 12px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          color: #fff;
+          transition: transform 0.8s ease, box-shadow 0.8s ease;
+          backdrop-filter: blur(5px);
+        }
+        .iso-dashboard:hover .iso-panel-1 { transform: translateZ(50px); box-shadow: inset 0 0 20px rgba(255, 69, 0, 0.3), 0 25px 45px rgba(0,0,0,0.9); }
+        .iso-dashboard:hover .iso-panel-2 { transform: translateZ(80px); box-shadow: inset 0 0 20px rgba(255, 69, 0, 0.3), 0 35px 55px rgba(0,0,0,0.9); }
+        .iso-dashboard:hover .iso-panel-3 { transform: translateZ(110px); box-shadow: inset 0 0 20px rgba(255, 69, 0, 0.3), 0 45px 65px rgba(0,0,0,0.9); }
+        
+        .iso-panel-1 { top: 0; left: 0; width: 280px; height: 140px; transform: translateZ(20px); }
+        .iso-panel-2 { top: 0; right: 0; width: 280px; height: 280px; transform: translateZ(40px); background: rgba(255, 69, 0, 0.05); }
+        .iso-panel-3 { bottom: 0; left: 0; width: 280px; height: 120px; transform: translateZ(60px); }
+        
+        .iso-value { font-size: 2.5rem; font-family: var(--font-heading); color: var(--brand-orange); font-weight: 700; text-shadow: 0 0 15px rgba(255, 69, 0, 0.6); }
+        .iso-label { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: #ccc; }
+        @media (max-width: 768px) {
+          .iso-dashboard { transform: scale(0.6); height: 300px; }
+        }
+      </style>
+
+      <div class="iso-dashboard">
+        <div class="iso-grid">
+          <div class="iso-panel iso-panel-1">
+            <div class="iso-value">5.2G</div>
+            <div class="iso-label">Peak Lateral Force</div>
+          </div>
+          <div class="iso-panel iso-panel-2">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--brand-orange)" stroke-width="1.5" style="margin-bottom: 20px; filter: drop-shadow(0 0 10px rgba(255,69,0,0.5));">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <div class="iso-value">0.12s</div>
+            <div class="iso-label">Reaction Time</div>
+          </div>
+          <div class="iso-panel iso-panel-3">
+            <div class="iso-value">342<span style="font-size: 1.2rem;">km/h</span></div>
+            <div class="iso-label">Top Speed</div>
+          </div>
         </div>
       </div>
     </div>
@@ -316,3 +462,4 @@
   <script src="assets/js/animations.js"></script>
 </body>
 </html>
+
