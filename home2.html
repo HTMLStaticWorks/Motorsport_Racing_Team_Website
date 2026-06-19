@@ -127,7 +127,7 @@
       position: relative;
       padding: 0.5rem 0;
       transition: var(--transition-fast);
-      cursor: none !important;
+      
     }
 
     .nav-link::after {
@@ -173,7 +173,7 @@
       align-items: center;
       justify-content: center;
       transition: var(--transition-fast);
-      cursor: none !important;
+      
     }
 
     .toggle-btn:hover {
@@ -187,7 +187,7 @@
       gap: 5px;
       background: none;
       border: none;
-      cursor: none !important;
+      
     }
 
     .hamburger span {
@@ -439,7 +439,7 @@
           box-shadow: 0 0 20px var(--brand-orange-glow);
           transform: translateZ(-20px);
           transition: all 0.5s ease;
-          cursor: none !important;
+          
           position: relative;
           z-index: 2;
           border: 3px solid #111;
@@ -520,6 +520,7 @@
         @media (max-width: 850px) {
           .vertical-path {
             left: 30px;
+            transform: translateX(-50%);
           }
 
           .journey-node {
@@ -532,7 +533,7 @@
           .node-point {
             position: absolute;
             left: 30px;
-            transform: translateX(-50%) translateZ(-20px);
+            transform: translateX(-50%);
           }
 
           .journey-node:nth-child(odd) .node-content,
@@ -697,7 +698,7 @@
 
         /* Right Side: Interactive List */
         .tech-list-view { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 1rem; }
-        .tech-list-item { padding: 2rem; border-left: 4px solid rgba(255,255,255,0.1); cursor: none !important; transition: all 0.4s ease; position: relative; border-radius: 0 12px 12px 0; background: transparent; }
+        .tech-list-item { padding: 2rem; border-left: 4px solid rgba(255,255,255,0.1);  transition: all 0.4s ease; position: relative; border-radius: 0 12px 12px 0; background: transparent; }
         .tech-list-item:hover, .tech-list-item.active-tech { border-left-color: var(--brand-orange); background: linear-gradient(90deg, rgba(255,107,0,0.1) 0%, transparent 100%); padding-left: 3rem; transform: translateX(10px); }
         
         .tech-list-title { color: var(--text-primary); font-size: 1.8rem; margin-bottom: 0.5rem; font-family: var(--font-heading); transition: color 0.3s; }

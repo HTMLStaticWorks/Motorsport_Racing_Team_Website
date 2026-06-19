@@ -1,52 +1,6 @@
 /* animations.js */
 document.addEventListener('DOMContentLoaded', () => {
-  // Custom Cursor
-  const cursor = document.createElement('div');
-  cursor.classList.add('custom-cursor');
-  document.body.appendChild(cursor);
 
-  let mouseX = window.innerWidth / 2;
-  let mouseY = window.innerHeight / 2;
-  let cursorX = mouseX;
-  let cursorY = mouseY;
-  let angle = 0;
-
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    
-    // Add hover effect for clickable elements
-    const target = e.target;
-    if (target.tagName.toLowerCase() === 'a' || target.tagName.toLowerCase() === 'button' || target.closest('a') || target.closest('button')) {
-      cursor.classList.add('hovering');
-    } else {
-      cursor.classList.remove('hovering');
-    }
-  });
-
-  function animateCursor() {
-    let dx = mouseX - cursorX;
-    let dy = mouseY - cursorY;
-    
-    // Calculate angle for the car to face direction of movement
-    if (Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5) {
-      // Add 90 degrees offset because the SVG car path points upwards
-      angle = Math.atan2(dy, dx) * 180 / Math.PI + 90;
-    }
-    
-    // Smooth follow
-    cursorX += dx * 0.15;
-    cursorY += dy * 0.15;
-    
-    // Set position and rotation
-    cursor.style.left = `${cursorX}px`;
-    cursor.style.top = `${cursorY}px`;
-    cursor.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
-    
-    requestAnimationFrame(animateCursor);
-  }
-  
-  animateCursor();
 
   // Scroll Reveals
   const revealElements = document.querySelectorAll('.reveal');

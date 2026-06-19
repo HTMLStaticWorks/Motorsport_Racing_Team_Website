@@ -60,7 +60,7 @@
       position: relative;
       padding: 0.5rem 0;
       transition: var(--transition-fast);
-      cursor: none !important;
+      
     }
     .nav-link::after {
       content: '';
@@ -88,7 +88,7 @@
       gap: 5px;
       background: none;
       border: none;
-      cursor: none !important;
+      
     }
     .hamburger span {
       width: 25px;
@@ -111,7 +111,7 @@
       align-items: center;
       justify-content: center;
       transition: var(--transition-fast);
-      cursor: none !important;
+      
     }
     .toggle-btn:hover {
       border-color: var(--brand-orange);
@@ -440,7 +440,7 @@
       
       <style>
         .hologram-timeline { display: flex; flex-direction: column; gap: 2rem; perspective: 1200px; max-width: 900px; margin: 2rem auto 4rem; padding: 2rem 1rem; }
-        .hologram-item { display: flex; align-items: center; gap: 3rem; padding: 2.5rem 3rem; background: linear-gradient(90deg, rgba(255,107,0,0.05), transparent); border-left: 4px solid var(--brand-orange); transform: rotateX(20deg) rotateY(-15deg) scale(0.95); transform-style: preserve-3d; transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1); cursor: none !important; box-shadow: -15px 20px 30px rgba(0,0,0,0.6); position: relative; border-radius: 0 16px 16px 0; overflow: hidden; }
+        .hologram-item { display: flex; align-items: center; gap: 3rem; padding: 2.5rem 3rem; background: linear-gradient(90deg, rgba(255,107,0,0.05), transparent); border-left: 4px solid var(--brand-orange); transform: rotateX(20deg) rotateY(-15deg) scale(0.95); transform-style: preserve-3d; transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);  box-shadow: -15px 20px 30px rgba(0,0,0,0.6); position: relative; border-radius: 0 16px 16px 0; overflow: hidden; }
         .hologram-item::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,107,0,0.03) 3px, rgba(255,107,0,0.03) 6px); pointer-events: none; z-index: 0; }
         .hologram-item::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, var(--brand-orange), transparent); opacity: 0.5; }
         
@@ -452,15 +452,16 @@
         .holo-badge { font-size: 5rem; font-family: var(--font-heading); color: transparent; -webkit-text-stroke: 2px var(--brand-orange); font-weight: 550; text-shadow: 0 0 20px var(--brand-orange-glow); line-height: 1; letter-spacing: 2px; }
         .hologram-item:hover .holo-badge { color: var(--brand-orange); -webkit-text-stroke: 0; }
         
-        .holo-content { flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
-        .holo-title { font-size: 1.8rem; font-weight: 550; color: var(--text-primary); text-transform: uppercase; letter-spacing: 1px; font-family: var(--font-heading); }
-        .holo-sub { font-size: 1.05rem; color: var(--text-secondary); }
-        .holo-highlight { color: var(--brand-orange); font-weight: 550; margin-top: 0.5rem; display: inline-block; padding: 4px 10px; background: rgba(255,107,0,0.1); border-radius: 4px; border: 1px solid rgba(255,107,0,0.2); }
+        .holo-content { flex: 1; display: flex; flex-direction: column; gap: 0.5rem; width: 100%; overflow: hidden; }
+        .holo-title { font-size: 1.8rem; font-weight: 550; color: var(--text-primary); text-transform: uppercase; letter-spacing: 1px; font-family: var(--font-heading); word-break: break-word; overflow-wrap: break-word; }
+        .holo-sub { font-size: 1.05rem; color: var(--text-secondary); word-break: break-word; overflow-wrap: break-word; }
+        .holo-highlight { color: var(--brand-orange); font-weight: 550; margin-top: 0.5rem; display: inline-block; padding: 4px 10px; background: rgba(255,107,0,0.1); border-radius: 4px; border: 1px solid rgba(255,107,0,0.2); word-break: break-word; }
         
         @media (max-width: 768px) {
-          .hologram-item { flex-direction: column; align-items: flex-start; gap: 1.5rem; padding: 2rem; transform: none; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
-          .holo-content-wrapper { flex-direction: column; align-items: flex-start; gap: 1rem; transform: none !important; }
+          .hologram-item { flex-direction: column; align-items: flex-start; gap: 1.5rem; padding: 1.5rem; transform: none; box-shadow: 0 10px 20px rgba(0,0,0,0.5); width: 100%; box-sizing: border-box; }
+          .holo-content-wrapper { flex-direction: column; align-items: flex-start; gap: 1rem; transform: none !important; width: 100%; }
           .hologram-item:hover { transform: translateY(-5px); }
+          .holo-title { font-size: 1.5rem; }
         }
       </style>
 
