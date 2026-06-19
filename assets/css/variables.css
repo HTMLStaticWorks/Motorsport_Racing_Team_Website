@@ -36,6 +36,13 @@
   --z-modal: 1050;
 }
 
+/* Mobile Padding Adjustment */
+@media (max-width: 768px) {
+  :root {
+    --container-padding: 1rem;
+  }
+}
+
 [data-theme="light"] {
   --bg-primary: #f0f0f0;
   --bg-secondary: #ffffff;

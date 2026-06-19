@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="dark" dir="ltr">
 <head>
   <meta charset="UTF-8">
@@ -40,7 +40,7 @@
     .logo {
       font-family: var(--font-heading);
       font-size: 1.8rem;
-      font-weight: 700;
+      font-weight: 550;
       color: var(--brand-orange);
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -52,7 +52,7 @@
     }
     .nav-link {
       font-family: var(--font-heading);
-      font-size: 0.95rem;
+      font-size: 0.8rem;
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 1px;
@@ -123,21 +123,29 @@
         top: 0;
         right: -100%;
         width: 300px;
+        max-width: 100vw;
         height: 100vh;
         background: var(--bg-primary);
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
+        padding-top: 60px;
+        padding-bottom: 1rem;
+        overflow-y: auto;
         transition: right var(--transition-normal);
         border-left: 1px solid var(--border-color);
       }
       [dir="rtl"] .nav-menu { right: auto; left: -100%; border-left: none; border-right: 1px solid var(--border-color); }
       .nav-menu.active { right: 0; }
       [dir="rtl"] .nav-menu.active { left: 0; }
-      .hamburger { display: flex; z-index: var(--z-dropdown); }
+      .hamburger { display: flex; z-index: var(--z-dropdown); margin-left: auto; }
+      [dir="rtl"] .hamburger { margin-left: 0; margin-right: auto; }
       .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
       .hamburger.active span:nth-child(2) { opacity: 0; }
       .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
       .nav-actions { display: none; }
+      .mobile-nav-actions { display: flex !important; }
+      .nav-menu { gap: 0.5rem !important; }
+      .nav-link { padding: 0.25rem 0; font-size: 0.9rem; }
     }
 
     /* Hero Section */
@@ -262,6 +270,8 @@
     
     @media (max-width: 1024px) {
       .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-col:last-child { grid-column: 1 / -1; text-align: center; }
+      .footer-col:last-child form { margin: 0 auto; max-width: 400px; }
     }
     @media (max-width: 600px) {
       .footer-grid { grid-template-columns: 1fr; }
@@ -296,11 +306,22 @@
         <a href="results.html" class="nav-link">Results</a>
         <a href="merchandise.html" class="nav-link">Merchandise</a>
         <a href="contact.html" class="nav-link">Contact</a>
+
+        <div class="mobile-nav-actions" style="display: none; flex-direction: column; gap: 0.5rem; padding: 0.5rem 2rem; margin-top: 0.5rem; border-top: 1px solid var(--border-color); width: 100%; align-items: center;">
+          <div class="toggles-nav" style="justify-content: center; margin-bottom: 0.25rem; display: flex; gap: 0.5rem;">
+            <button class="toggle-btn theme-toggle" title="Toggle Theme">🌓</button>
+            <button class="toggle-btn rtl-toggle" title="Toggle RTL">⇄</button>
+          </div>
+          <a href="register.html" class="btn btn-primary" style="text-align: center; width: 100%; height: 40px; line-height: 40px; padding: 0;">Join The Team</a>
+          <a href="sponsors.html" class="btn btn-secondary" style="text-align: center; width: 100%; height: 40px; line-height: 40px; padding: 0;">Become Sponsor</a>
+        </div>
       </nav>
       <style>
         .nav-item-dropdown:hover .dropdown-content { display: flex !important; }
         .dropdown-content a:hover { color: var(--brand-orange) !important; }
-        .nav-menu { display: flex; align-items: center; white-space: nowrap; margin-right: 2.5rem; }
+        @media (min-width: 1025px) {
+          .nav-menu { display: flex; align-items: center; white-space: nowrap; margin-right: 2.5rem; }
+        }
       </style>
 
       <div class="nav-actions">
@@ -428,13 +449,13 @@
         .holo-content-wrapper { display: flex; align-items: center; gap: 3rem; width: 100%; position: relative; z-index: 2; transform: translateZ(50px); transition: transform 0.6s ease; }
         .hologram-item:hover .holo-content-wrapper { transform: translateZ(80px); }
         
-        .holo-badge { font-size: 5rem; font-family: var(--font-heading); color: transparent; -webkit-text-stroke: 2px var(--brand-orange); font-weight: 900; text-shadow: 0 0 20px var(--brand-orange-glow); line-height: 1; letter-spacing: 2px; }
+        .holo-badge { font-size: 5rem; font-family: var(--font-heading); color: transparent; -webkit-text-stroke: 2px var(--brand-orange); font-weight: 550; text-shadow: 0 0 20px var(--brand-orange-glow); line-height: 1; letter-spacing: 2px; }
         .hologram-item:hover .holo-badge { color: var(--brand-orange); -webkit-text-stroke: 0; }
         
         .holo-content { flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
-        .holo-title { font-size: 1.8rem; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 1px; font-family: var(--font-heading); }
-        .holo-sub { font-size: 1.05rem; color: #ccc; }
-        .holo-highlight { color: var(--brand-orange); font-weight: 600; margin-top: 0.5rem; display: inline-block; padding: 4px 10px; background: rgba(255,107,0,0.1); border-radius: 4px; border: 1px solid rgba(255,107,0,0.2); }
+        .holo-title { font-size: 1.8rem; font-weight: 550; color: var(--text-primary); text-transform: uppercase; letter-spacing: 1px; font-family: var(--font-heading); }
+        .holo-sub { font-size: 1.05rem; color: var(--text-secondary); }
+        .holo-highlight { color: var(--brand-orange); font-weight: 550; margin-top: 0.5rem; display: inline-block; padding: 4px 10px; background: rgba(255,107,0,0.1); border-radius: 4px; border: 1px solid rgba(255,107,0,0.2); }
         
         @media (max-width: 768px) {
           .hologram-item { flex-direction: column; align-items: flex-start; gap: 1.5rem; padding: 2rem; transform: none; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
@@ -531,12 +552,11 @@
   </section>
 
   <!-- 6. Join Racing Community CTA -->
-  <section class="reveal neon-border-top" style="background: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=2000&auto=format&fit=crop') center/cover; position: relative;">
-    <div style="position: absolute; top:0; left:0; width:100%; height:100%; background:rgba(10,10,10,0.85);"></div>
+  <section class="reveal neon-border-top" style="background: var(--bg-secondary); position: relative;">
     <div class="container" style="position: relative; z-index: 2; text-align: center;">
       <h2>Join The Racing Community</h2>
-      <p style="max-width: 600px; margin: 0 auto 2rem; color: #ccc;">Get exclusive updates, early access to merchandise, and behind-the-scenes content delivered straight to your inbox.</p>
-      <form style="display: flex; max-width: 500px; margin: 0 auto; gap: 10px;">
+      <p style="max-width: 600px; margin: 0 auto 2rem; color: var(--text-secondary);">Get exclusive updates, early access to merchandise, and behind-the-scenes content delivered straight to your inbox.</p>
+      <form class="community-form" style="display: flex; max-width: 500px; margin: 0 auto; gap: 10px;">
         <input type="email" class="form-control" placeholder="Enter your email" required style="flex: 1;">
         <button type="submit" class="btn btn-primary">Subscribe</button>
       </form>
@@ -556,10 +576,18 @@
           </h4>
           <p style="font-size: 0.9rem; color: var(--text-secondary);">Pushing the boundaries of motorsport engineering and elite performance. Join our championship journey.</p>
           <div class="social-icons">
-            <a href="#" class="social-icon" aria-label="Facebook">FB</a>
-            <a href="#" class="social-icon" aria-label="Twitter">X</a>
-            <a href="#" class="social-icon" aria-label="Instagram">IG</a>
-            <a href="#" class="social-icon" aria-label="YouTube">YT</a>
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6c1.05 0 2.15.19 2.15.19V8.5h-1.21c-1.19 0-1.56.74-1.56 1.5V12h2.73l-.44 3h-2.29v6.8C18.56 20.87 22 16.84 22 12z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Twitter">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="YouTube">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.55 9.376.55 9.376.55s7.505 0 9.377-.55a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
           </div>
         </div>
         

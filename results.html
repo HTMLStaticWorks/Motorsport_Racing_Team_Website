@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="dark" dir="ltr">
 <head>
   <meta charset="UTF-8">
@@ -18,9 +18,9 @@
     .main-header { position: fixed; top: 0; left: 0; width: 100%; z-index: var(--z-nav); background: rgba(10, 10, 10, 0.4); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--glass-border); transition: all var(--transition-normal); padding: 1.5rem 0; }
     .main-header.scrolled { padding: 0.8rem 0; background: rgba(10, 10, 10, 0.9); box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
     .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: var(--container-width); margin: 0 auto; padding: 0 var(--container-padding); }
-    .logo { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--brand-orange); letter-spacing: 2px; text-transform: uppercase; }
+    .logo { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 550; color: var(--brand-orange); letter-spacing: 2px; text-transform: uppercase; }
     .nav-menu { display: flex; gap: 1rem; align-items: center; }
-    .nav-link { font-family: var(--font-heading); font-size: 0.95rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; position: relative; padding: 0.5rem 0; transition: var(--transition-fast); cursor: none !important; }
+    .nav-link { font-family: var(--font-heading); font-size: 0.8rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; position: relative; padding: 0.5rem 0; transition: var(--transition-fast); cursor: none !important; }
     .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0%; height: 2px; background: var(--brand-orange); transition: width var(--transition-normal); box-shadow: 0 0 8px var(--brand-orange-glow); }
     .nav-link:hover::after, .nav-link.active::after { width: 100%; }
     .nav-link:hover { color: var(--brand-orange); }
@@ -31,15 +31,19 @@
     .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: none !important; }
     .hamburger span { width: 25px; height: 2px; background: var(--text-primary); transition: var(--transition-fast); }
     @media (max-width: 1024px) {
-      .nav-menu { position: fixed; top: 0; right: -100%; width: 300px; height: 100vh; background: var(--bg-primary); flex-direction: column; justify-content: center; transition: right var(--transition-normal); border-left: 1px solid var(--border-color); }
+      .nav-menu { position: fixed; top: 0; right: -100%; width: 300px; max-width: 100vw; height: 100vh; background: var(--bg-primary); flex-direction: column; justify-content: flex-start; padding-top: 60px; padding-bottom: 1rem; overflow-y: auto; transition: right var(--transition-normal); border-left: 1px solid var(--border-color); }
       [dir="rtl"] .nav-menu { right: auto; left: -100%; border-left: none; border-right: 1px solid var(--border-color); }
       .nav-menu.active { right: 0; }
       [dir="rtl"] .nav-menu.active { left: 0; }
-      .hamburger { display: flex; z-index: var(--z-dropdown); }
+      .hamburger { display: flex; z-index: var(--z-dropdown); margin-left: auto; }
+      [dir="rtl"] .hamburger { margin-left: 0; margin-right: auto; }
       .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
       .hamburger.active span:nth-child(2) { opacity: 0; }
       .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
       .nav-actions { display: none; }
+      .mobile-nav-actions { display: flex !important; }
+      .nav-menu { gap: 0.5rem !important; }
+      .nav-link { padding: 0.25rem 0; font-size: 0.9rem; }
     }
     
     .main-footer { background: var(--bg-secondary); padding: 5rem 0 2rem; position: relative; }
@@ -53,7 +57,7 @@
     .social-icon { width: 40px; height: 40px; background: var(--glass-bg); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: var(--transition-fast); }
     .social-icon:hover { border-color: var(--brand-orange); background: var(--brand-orange-glow); transform: translateY(-3px); }
     .footer-bottom { border-top: 1px solid var(--border-color); padding-top: 2rem; text-align: center; color: var(--text-secondary); font-size: 0.9rem; }
-    @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-col:last-child { grid-column: 1 / -1; text-align: center; } .footer-col:last-child form { margin: 0 auto; max-width: 400px; } }
     @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
@@ -82,11 +86,21 @@
         <a href="results.html" class="nav-link active">Results</a>
         <a href="merchandise.html" class="nav-link">Merchandise</a>
         <a href="contact.html" class="nav-link">Contact</a>
+              <div class="mobile-nav-actions" style="display: none; flex-direction: column; gap: 0.5rem; padding: 0.5rem 2rem; margin-top: 0.5rem; border-top: 1px solid var(--border-color); width: 100%; align-items: center;">
+          <div class="toggles-nav" style="justify-content: center; margin-bottom: 0.25rem; display: flex; gap: 0.5rem;">
+            <button class="toggle-btn theme-toggle" title="Toggle Theme">🌓</button>
+            <button class="toggle-btn rtl-toggle" title="Toggle RTL">⇄</button>
+          </div>
+          <a href="register.html" class="btn btn-primary" style="text-align: center; width: 100%; height: 40px; line-height: 40px; padding: 0;">Join The Team</a>
+          <a href="sponsors.html" class="btn btn-secondary" style="text-align: center; width: 100%; height: 40px; line-height: 40px; padding: 0;">Become Sponsor</a>
+        </div>
       </nav>
       <style>
         .nav-item-dropdown:hover .dropdown-content { display: flex !important; }
         .dropdown-content a:hover { color: var(--brand-orange) !important; }
-        .nav-menu { display: flex; align-items: center; white-space: nowrap; margin-right: 2.5rem; }
+        @media (min-width: 1025px) {
+          .nav-menu { display: flex; align-items: center; white-space: nowrap; margin-right: 2.5rem; }
+        }
       </style>
       <div class="nav-actions">
         <div class="toggles-nav">
@@ -117,25 +131,25 @@
       
       <div class="grid-4">
         <div class="glass-card">
-          <div style="font-size: 2rem; color: var(--brand-orange); font-weight: 700; margin-bottom: 10px;">P1 & P4</div>
+          <div style="font-size: 2rem; color: var(--brand-orange); font-weight: 550; margin-bottom: 10px;">P1 & P4</div>
           <h3>Singapore GP</h3>
           <p>Total Points: 37</p>
           <p style="font-size: 0.8rem; color: var(--text-secondary);">Flawless strategy execution in mixed conditions led to a commanding victory.</p>
         </div>
         <div class="glass-card">
-          <div style="font-size: 2rem; color: var(--text-primary); font-weight: 700; margin-bottom: 10px;">P2 & P3</div>
+          <div style="font-size: 2rem; color: var(--text-primary); font-weight: 550; margin-bottom: 10px;">P2 & P3</div>
           <h3>Italian GP</h3>
           <p>Total Points: 33</p>
           <p style="font-size: 0.8rem; color: var(--text-secondary);">Double podium finish at the Temple of Speed, securing vital constructor points.</p>
         </div>
         <div class="glass-card">
-          <div style="font-size: 2rem; color: var(--brand-orange); font-weight: 700; margin-bottom: 10px;">P1 & DNF</div>
+          <div style="font-size: 2rem; color: var(--brand-orange); font-weight: 550; margin-bottom: 10px;">P1 & DNF</div>
           <h3>Dutch GP</h3>
           <p>Total Points: 25</p>
           <p style="font-size: 0.8rem; color: var(--text-secondary);">A bittersweet weekend with a dominant win overshadowing a mechanical retirement.</p>
         </div>
         <div class="glass-card">
-          <div style="font-size: 2rem; color: var(--text-primary); font-weight: 700; margin-bottom: 10px;">P3 & P5</div>
+          <div style="font-size: 2rem; color: var(--text-primary); font-weight: 550; margin-bottom: 10px;">P3 & P5</div>
           <h3>Belgian GP</h3>
           <p>Total Points: 25</p>
           <p style="font-size: 0.8rem; color: var(--text-secondary);">Solid points haul in a rain-shortened sprint weekend at Spa.</p>
@@ -153,25 +167,25 @@
       <div class="grid-4">
         <div class="glass-card" style="text-align: center;">
           <h3 style="color: var(--brand-orange);">Constructor</h3>
-          <div style="font-size: 3rem; font-family: var(--font-heading); font-weight: 700;">1st</div>
+          <div style="font-size: 3rem; font-family: var(--font-heading); font-weight: 550;">1st</div>
           <p>Points: 486</p>
           <p style="font-size: 0.8rem; color: var(--brand-orange);">Lead: +54 pts</p>
         </div>
         <div class="glass-card" style="text-align: center;">
           <h3 style="color: var(--brand-orange);">Alex Mercer</h3>
-          <div style="font-size: 3rem; font-family: var(--font-heading); font-weight: 700;">1st</div>
+          <div style="font-size: 3rem; font-family: var(--font-heading); font-weight: 550;">1st</div>
           <p>Points: 264</p>
           <p style="font-size: 0.8rem; color: var(--brand-orange);">Lead: +22 pts</p>
         </div>
         <div class="glass-card" style="text-align: center;">
           <h3 style="color: var(--text-secondary);">Sarah Jenkins</h3>
-          <div style="font-size: 3rem; font-family: var(--font-heading); font-weight: 700;">3rd</div>
+          <div style="font-size: 3rem; font-family: var(--font-heading); font-weight: 550;">3rd</div>
           <p>Points: 222</p>
           <p style="font-size: 0.8rem; color: var(--text-secondary);">Gap: -42 pts</p>
         </div>
         <div class="glass-card" style="text-align: center;">
           <h3 style="color: var(--brand-orange);">Pole Trophy</h3>
-          <div style="font-size: 3rem; font-family: var(--font-heading); font-weight: 700;">1st</div>
+          <div style="font-size: 3rem; font-family: var(--font-heading); font-weight: 550;">1st</div>
           <p>Total Poles: 9</p>
           <p style="font-size: 0.8rem; color: var(--brand-orange);">Unbeatable one-lap pace</p>
         </div>
@@ -190,31 +204,86 @@
           display: flex;
           justify-content: center;
           align-items: flex-end;
-          height: 400px;
-          perspective: 1000px;
-          gap: 1rem;
-          margin-top: 5rem;
+          height: 480px;
+          perspective: 1500px;
+          gap: 1.5rem;
+          margin-top: 6rem;
+          margin-bottom: 2rem;
+          position: relative;
+          transform: scale(1.15);
+          transform-origin: bottom center;
+        }
+        .podium-container::after {
+          content: '';
+          position: absolute;
+          bottom: -30px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 80%;
+          height: 60px;
+          background: radial-gradient(ellipse at center, rgba(255, 69, 0, 0.4) 0%, transparent 70%);
+          filter: blur(15px);
+          pointer-events: none;
         }
         .podium-step {
           position: relative;
           width: 150px;
           transform-style: preserve-3d;
-          transition: transform 0.5s ease;
+          transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
           cursor: pointer;
         }
         .podium-step:hover {
-          transform: rotateY(15deg) translateZ(30px);
+          transform: rotateY(20deg) rotateX(-5deg) translateZ(40px) translateY(-10px);
         }
         .step-top, .step-front, .step-side {
           position: absolute;
-          border: 1px solid var(--brand-orange);
-          background: rgba(20,20,20,0.8);
-          backdrop-filter: blur(5px);
-          -webkit-backdrop-filter: blur(5px);
+          border: 1px solid rgba(255, 69, 0, 0.4);
+          background: linear-gradient(135deg, rgba(30,30,30,0.9) 0%, rgba(15,15,15,0.95) 100%);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          transition: all 0.5s ease;
         }
-        .step-top { width: 150px; height: 150px; transform: rotateX(90deg) translateZ(75px); transform-origin: bottom; box-shadow: inset 0 0 20px rgba(255,69,0,0.3); }
-        .step-front { width: 150px; transform: translateZ(75px); display: flex; justify-content: center; align-items: center; font-size: 3rem; font-weight: bold; color: var(--brand-orange); font-family: var(--font-heading); }
-        .step-side { width: 150px; transform: rotateY(90deg) translateZ(75px); background: rgba(10,10,10,0.9); }
+        .podium-step:hover .step-top,
+        .podium-step:hover .step-front,
+        .podium-step:hover .step-side {
+          border-color: var(--brand-orange);
+          box-shadow: 0 0 20px rgba(255, 69, 0, 0.3) inset;
+        }
+        .step-top { 
+          width: 150px; height: 150px; 
+          transform: rotateX(90deg) translateZ(75px); 
+          transform-origin: bottom; 
+          background: linear-gradient(to bottom, rgba(255,69,0,0.1), transparent);
+          box-shadow: inset 0 0 30px rgba(255,69,0,0.2); 
+        }
+        .step-front { 
+          width: 150px; 
+          transform: translateZ(75px); 
+          display: flex; justify-content: center; align-items: center; 
+          font-size: 3.5rem; font-weight: 550; 
+          color: transparent; 
+          -webkit-text-stroke: 1px var(--brand-orange);
+          font-family: var(--font-heading); 
+          background: linear-gradient(180deg, rgba(20,20,20,0.8) 0%, rgba(0,0,0,0.9) 100%);
+          overflow: hidden;
+        }
+        .podium-step:hover .step-front {
+          color: var(--brand-orange);
+          -webkit-text-stroke: 0;
+          text-shadow: 0 0 15px var(--brand-orange-glow);
+        }
+        .step-front::before {
+          content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+          transform: skewX(-20deg);
+          transition: 0.5s;
+        }
+        .podium-step:hover .step-front::before { left: 200%; transition: 0.8s ease-in-out; }
+        .step-side { 
+          width: 150px; 
+          transform: rotateY(90deg) translateZ(75px); 
+          background: linear-gradient(90deg, rgba(10,10,10,0.9), rgba(5,5,5,0.95)); 
+        }
         
         .p1 { height: 250px; z-index: 3; }
         .p2 { height: 180px; z-index: 2; }
@@ -232,24 +301,54 @@
           position: absolute;
           bottom: 100%;
           left: 50%;
-          transform: translateX(-50%) translateZ(50px);
+          transform: translateX(-50%) translateZ(50px) translateY(20px);
           text-align: center;
           width: max-content;
           opacity: 0;
-          transition: all 0.5s ease;
+          transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
           pointer-events: none;
+          background: rgba(0,0,0,0.6);
+          padding: 8px 15px;
+          border-radius: 8px;
+          border: 1px solid rgba(255,69,0,0.3);
+          box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+          backdrop-filter: blur(4px);
         }
         .podium-step:hover .podium-hologram {
           opacity: 1;
-          transform: translateX(-50%) translateZ(50px) translateY(-20px);
+          transform: translateX(-50%) translateZ(50px) translateY(-15px);
+          border-color: var(--brand-orange);
+          box-shadow: 0 10px 20px rgba(0,0,0,0.8), 0 0 15px rgba(255,69,0,0.4);
         }
-        .podium-hologram h4 { margin: 0; color: #fff; font-size: 1.2rem; text-shadow: 0 0 10px var(--brand-orange-glow); }
-        .podium-hologram p { margin: 0; color: var(--brand-orange); font-size: 0.9rem; }
+        .podium-hologram h4 { margin: 0; color: var(--text-primary); font-size: 1.3rem; text-shadow: 0 0 10px var(--brand-orange-glow); text-transform: uppercase; letter-spacing: 1px; }
+        .podium-hologram p { margin: 0; color: var(--brand-orange); font-size: 0.95rem; font-weight: 550; }
         @media (max-width: 768px) {
           .podium-container { transform: scale(0.6); margin-top: 2rem; }
         }
       </style>
 
+      <style>
+        .step-front { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 0; box-sizing: border-box; }
+        .step-front img { 
+          width: 88%; 
+          object-fit: cover; 
+          border-radius: 6px; 
+          border: 2px solid rgba(255, 69, 0, 0.6); 
+          box-shadow: 0 5px 15px rgba(0,0,0,0.8), 0 0 12px rgba(255, 69, 0, 0.4);
+          transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
+          position: relative;
+          z-index: 2;
+        }
+        .podium-step:hover .step-front img {
+          transform: scale(1.1) translateY(-4px);
+          box-shadow: 0 15px 25px rgba(0,0,0,0.9), 0 0 25px rgba(255, 69, 0, 0.8);
+          border-color: var(--brand-orange);
+        }
+        .p1 .step-front img { height: 105px; }
+        .p2 .step-front img { height: 75px; }
+        .p3 .step-front img { height: 45px; }
+        .step-front span { line-height: 1; margin-top: -5px; position: relative; z-index: 1; }
+      </style>
       <div class="podium-container">
         <!-- P2 -->
         <div class="podium-step p2">
@@ -258,7 +357,10 @@
             <p>Sarah Jenkins</p>
           </div>
           <div class="step-top"></div>
-          <div class="step-front">2</div>
+          <div class="step-front">
+            <img src="assets/images/italian cp.png" alt="Italian GP">
+            <span>2</span>
+          </div>
           <div class="step-side"></div>
         </div>
         <!-- P1 -->
@@ -268,7 +370,10 @@
             <p>Alex Mercer</p>
           </div>
           <div class="step-top"></div>
-          <div class="step-front">1</div>
+          <div class="step-front">
+            <img src="assets/images/singaporr gp.png" alt="Singapore GP">
+            <span>1</span>
+          </div>
           <div class="step-side"></div>
         </div>
         <!-- P3 -->
@@ -278,7 +383,10 @@
             <p>David Russo</p>
           </div>
           <div class="step-top"></div>
-          <div class="step-front">3</div>
+          <div class="step-front">
+            <img src="assets/images/beligian gp.png" alt="Belgian GP">
+            <span>3</span>
+          </div>
           <div class="step-side"></div>
         </div>
       </div>
@@ -294,7 +402,7 @@
       <style>
         .timeline-3d {
           display: flex;
-          gap: 1rem;
+          gap: 0;
           perspective: 2000px;
           height: 400px;
         }
@@ -303,7 +411,6 @@
           position: relative;
           background: rgba(255,255,255,0.05);
           border: 1px solid rgba(255,255,255,0.1);
-          border-radius: 12px;
           transform-style: preserve-3d;
           transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
           cursor: pointer;
@@ -312,6 +419,8 @@
           align-items: flex-end;
           padding: 2rem;
         }
+        .timeline-card:first-child { border-radius: 12px 0 0 12px; }
+        .timeline-card:last-child { border-radius: 0 12px 12px 0; }
         .timeline-card::before {
           content: '';
           position: absolute;
@@ -322,9 +431,9 @@
           transition: opacity 0.6s;
           transform: translateZ(-1px);
         }
-        .timeline-card:nth-child(1)::before { background-image: url('https://images.unsplash.com/photo-1541443131876-44b0322278fd?q=80&w=800&auto=format&fit=crop'); }
-        .timeline-card:nth-child(2)::before { background-image: url('https://images.unsplash.com/photo-1533618485292-1fb4284b7a13?q=80&w=800&auto=format&fit=crop'); }
-        .timeline-card:nth-child(3)::before { background-image: url('https://images.unsplash.com/photo-1563212891-b6aab0afb79a?q=80&w=800&auto=format&fit=crop'); }
+        .timeline-card:nth-child(1)::before { background-image: url('assets/images/The%20Rebuild.png'); }
+        .timeline-card:nth-child(2)::before { background-image: url('assets/images/Return%20to%20Form.png'); }
+        .timeline-card:nth-child(3)::before { background-image: url('assets/images/Championship%20Glory.png'); }
         
         .timeline-card:hover {
           flex: 3;
@@ -349,7 +458,7 @@
           font-family: var(--font-heading);
           font-size: 2rem;
           color: var(--brand-orange);
-          font-weight: bold;
+          font-weight: 550;
           writing-mode: vertical-rl;
           transform: rotate(180deg);
           transition: all 0.6s;
@@ -395,11 +504,10 @@
   </section>
 
   <!-- 6. View Full Results CTA -->
-  <section class="reveal neon-border-top" style="background: url('https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=2000&auto=format&fit=crop') center/cover; position: relative;">
-    <div style="position: absolute; top:0; left:0; width:100%; height:100%; background:rgba(10,10,10,0.85);"></div>
+  <section class="reveal neon-border-top" style="background: var(--bg-secondary); position: relative;">
     <div class="container" style="position: relative; z-index: 2; text-align: center;">
       <h2>Deep Dive Into Data</h2>
-      <p style="max-width: 600px; margin: 0 auto 2rem; color: #ccc;">Access our comprehensive historical race database, interactive telemetry charts, and detailed lap-by-lap breakdowns.</p>
+      <p style="max-width: 600px; margin: 0 auto 2rem; color: var(--text-secondary);">Access our comprehensive historical race database, interactive telemetry charts, and detailed lap-by-lap breakdowns.</p>
       <a href="register.html" class="btn btn-primary">Access Telemetry Portal</a>
     </div>
   </section>
@@ -416,10 +524,18 @@
           </h4>
           <p style="font-size: 0.9rem; color: var(--text-secondary);">Pushing the boundaries of motorsport engineering and elite performance. Join our championship journey.</p>
           <div class="social-icons">
-            <a href="#" class="social-icon" aria-label="Facebook">FB</a>
-            <a href="#" class="social-icon" aria-label="Twitter">X</a>
-            <a href="#" class="social-icon" aria-label="Instagram">IG</a>
-            <a href="#" class="social-icon" aria-label="YouTube">YT</a>
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6c1.05 0 2.15.19 2.15.19V8.5h-1.21c-1.19 0-1.56.74-1.56 1.5V12h2.73l-.44 3h-2.29v6.8C18.56 20.87 22 16.84 22 12z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Twitter">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="YouTube">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.55 9.376.55 9.376.55s7.505 0 9.377-.55a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
           </div>
         </div>
         <div class="footer-col">

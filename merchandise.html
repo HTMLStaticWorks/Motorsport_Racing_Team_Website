@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="dark" dir="ltr">
 <head>
   <meta charset="UTF-8">
@@ -18,9 +18,9 @@
     .main-header { position: fixed; top: 0; left: 0; width: 100%; z-index: var(--z-nav); background: rgba(10, 10, 10, 0.4); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--glass-border); transition: all var(--transition-normal); padding: 1.5rem 0; }
     .main-header.scrolled { padding: 0.8rem 0; background: rgba(10, 10, 10, 0.9); box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
     .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: var(--container-width); margin: 0 auto; padding: 0 var(--container-padding); }
-    .logo { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--brand-orange); letter-spacing: 2px; text-transform: uppercase; }
+    .logo { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 550; color: var(--brand-orange); letter-spacing: 2px; text-transform: uppercase; }
     .nav-menu { display: flex; gap: 1rem; align-items: center; }
-    .nav-link { font-family: var(--font-heading); font-size: 0.95rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; position: relative; padding: 0.5rem 0; transition: var(--transition-fast); cursor: none !important; }
+    .nav-link { font-family: var(--font-heading); font-size: 0.8rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; position: relative; padding: 0.5rem 0; transition: var(--transition-fast); cursor: none !important; }
     .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0%; height: 2px; background: var(--brand-orange); transition: width var(--transition-normal); box-shadow: 0 0 8px var(--brand-orange-glow); }
     .nav-link:hover::after, .nav-link.active::after { width: 100%; }
     .nav-link:hover { color: var(--brand-orange); }
@@ -31,15 +31,19 @@
     .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: none !important; }
     .hamburger span { width: 25px; height: 2px; background: var(--text-primary); transition: var(--transition-fast); }
     @media (max-width: 1024px) {
-      .nav-menu { position: fixed; top: 0; right: -100%; width: 300px; height: 100vh; background: var(--bg-primary); flex-direction: column; justify-content: center; transition: right var(--transition-normal); border-left: 1px solid var(--border-color); }
+      .nav-menu { position: fixed; top: 0; right: -100%; width: 300px; max-width: 100vw; height: 100vh; background: var(--bg-primary); flex-direction: column; justify-content: flex-start; padding-top: 60px; padding-bottom: 1rem; overflow-y: auto; transition: right var(--transition-normal); border-left: 1px solid var(--border-color); }
       [dir="rtl"] .nav-menu { right: auto; left: -100%; border-left: none; border-right: 1px solid var(--border-color); }
       .nav-menu.active { right: 0; }
       [dir="rtl"] .nav-menu.active { left: 0; }
-      .hamburger { display: flex; z-index: var(--z-dropdown); }
+      .hamburger { display: flex; z-index: var(--z-dropdown); margin-left: auto; }
+      [dir="rtl"] .hamburger { margin-left: 0; margin-right: auto; }
       .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
       .hamburger.active span:nth-child(2) { opacity: 0; }
       .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
       .nav-actions { display: none; }
+      .mobile-nav-actions { display: flex !important; }
+      .nav-menu { gap: 0.5rem !important; }
+      .nav-link { padding: 0.25rem 0; font-size: 0.9rem; }
     }
     
     .main-footer { background: var(--bg-secondary); padding: 5rem 0 2rem; position: relative; }
@@ -53,7 +57,7 @@
     .social-icon { width: 40px; height: 40px; background: var(--glass-bg); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: var(--transition-fast); }
     .social-icon:hover { border-color: var(--brand-orange); background: var(--brand-orange-glow); transform: translateY(-3px); }
     .footer-bottom { border-top: 1px solid var(--border-color); padding-top: 2rem; text-align: center; color: var(--text-secondary); font-size: 0.9rem; }
-    @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-col:last-child { grid-column: 1 / -1; text-align: center; } .footer-col:last-child form { margin: 0 auto; max-width: 400px; } }
     @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
@@ -82,11 +86,21 @@
         <a href="results.html" class="nav-link">Results</a>
         <a href="merchandise.html" class="nav-link active">Merchandise</a>
         <a href="contact.html" class="nav-link">Contact</a>
+              <div class="mobile-nav-actions" style="display: none; flex-direction: column; gap: 0.5rem; padding: 0.5rem 2rem; margin-top: 0.5rem; border-top: 1px solid var(--border-color); width: 100%; align-items: center;">
+          <div class="toggles-nav" style="justify-content: center; margin-bottom: 0.25rem; display: flex; gap: 0.5rem;">
+            <button class="toggle-btn theme-toggle" title="Toggle Theme">🌓</button>
+            <button class="toggle-btn rtl-toggle" title="Toggle RTL">⇄</button>
+          </div>
+          <a href="register.html" class="btn btn-primary" style="text-align: center; width: 100%; height: 40px; line-height: 40px; padding: 0;">Join The Team</a>
+          <a href="sponsors.html" class="btn btn-secondary" style="text-align: center; width: 100%; height: 40px; line-height: 40px; padding: 0;">Become Sponsor</a>
+        </div>
       </nav>
       <style>
         .nav-item-dropdown:hover .dropdown-content { display: flex !important; }
         .dropdown-content a:hover { color: var(--brand-orange) !important; }
-        .nav-menu { display: flex; align-items: center; white-space: nowrap; margin-right: 2.5rem; }
+        @media (min-width: 1025px) {
+          .nav-menu { display: flex; align-items: center; white-space: nowrap; margin-right: 2.5rem; }
+        }
       </style>
       <div class="nav-actions">
         <div class="toggles-nav">
@@ -115,29 +129,61 @@
       <h2 style="text-align: center; margin-bottom: 1rem;">Racing Apparel</h2>
       <p style="text-align: center; max-width: 600px; margin: 0 auto;">Premium teamwear designed for maximum performance and style.</p>
       
-      <div class="grid-4">
+      <style>
+        .merch-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 3rem; }
+        .merch-grid .glass-card { border-radius: 0; border-right: none; overflow: hidden; }
+        .merch-grid .glass-card:first-child { border-radius: 12px 0 0 12px; }
+        .merch-grid .glass-card:last-child { border-radius: 0 12px 12px 0; border-right: 1px solid var(--glass-border); }
+        .merch-grid img { 
+          aspect-ratio: 1/1; 
+          object-fit: cover; 
+          width: calc(100% + 4rem); 
+          max-width: none;
+          margin-top: -2rem;
+          margin-left: -2rem;
+          margin-bottom: 1.5rem;
+          border-radius: 0; 
+          border-bottom: 1px solid var(--glass-border);
+        }
+        @media (max-width: 1024px) {
+          .merch-grid { grid-template-columns: repeat(2, 1fr); }
+          .merch-grid .glass-card { border-right: 1px solid var(--glass-border); border-bottom: none; }
+          .merch-grid .glass-card:nth-child(even) { border-right: none; }
+          .merch-grid .glass-card:nth-child(1) { border-radius: 12px 0 0 0; }
+          .merch-grid .glass-card:nth-child(2) { border-radius: 0 12px 0 0; border-right: 1px solid var(--glass-border); }
+          .merch-grid .glass-card:nth-child(3) { border-radius: 0 0 0 12px; border-bottom: 1px solid var(--glass-border); }
+          .merch-grid .glass-card:nth-child(4) { border-radius: 0 0 12px 0; border-bottom: 1px solid var(--glass-border); border-right: 1px solid var(--glass-border); }
+        }
+        @media (max-width: 600px) {
+          .merch-grid { grid-template-columns: 1fr; }
+          .merch-grid .glass-card { border-right: 1px solid var(--glass-border); border-bottom: none; border-radius: 0 !important; }
+          .merch-grid .glass-card:first-child { border-radius: 12px 12px 0 0 !important; }
+          .merch-grid .glass-card:last-child { border-radius: 0 0 12px 12px !important; border-bottom: 1px solid var(--glass-border); }
+        }
+      </style>
+      <div class="merch-grid">
         <div class="glass-card" style="text-align: center;">
-          <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=600&auto=format&fit=crop" alt="Team Polo" style="aspect-ratio: 1/1; object-fit: cover; border-radius: 8px;">
+          <img src="assets/images/Official%20Team%20Polo.png" alt="Official Team Polo">
           <h3>Official Team Polo</h3>
-          <p style="color: var(--brand-orange); font-size: 1.2rem; font-weight: bold;">$85.00</p>
+          <p style="color: var(--brand-orange); font-size: 1.2rem; font-weight: 550;">$85.00</p>
           <a href="#" class="btn btn-secondary" style="width: 100%; margin-top: auto; height: 40px; font-size: 0.8rem;">Add to Cart</a>
         </div>
         <div class="glass-card" style="text-align: center;">
-          <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=600&auto=format&fit=crop" alt="Softshell Jacket" style="aspect-ratio: 1/1; object-fit: cover; border-radius: 8px;">
+          <img src="assets/images/Softshell%20Jacket.png" alt="Softshell Jacket">
           <h3>Softshell Jacket</h3>
-          <p style="color: var(--brand-orange); font-size: 1.2rem; font-weight: bold;">$150.00</p>
+          <p style="color: var(--brand-orange); font-size: 1.2rem; font-weight: 550;">$150.00</p>
           <a href="#" class="btn btn-secondary" style="width: 100%; margin-top: auto; height: 40px; font-size: 0.8rem;">Add to Cart</a>
         </div>
         <div class="glass-card" style="text-align: center;">
-          <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=600&auto=format&fit=crop" alt="Driver T-Shirt" style="aspect-ratio: 1/1; object-fit: cover; border-radius: 8px;">
+          <img src="assets/images/Mercer%20%2307%20T-Shirt.png" alt="Mercer #07 T-Shirt">
           <h3>Mercer #07 T-Shirt</h3>
-          <p style="color: var(--brand-orange); font-size: 1.2rem; font-weight: bold;">$45.00</p>
+          <p style="color: var(--brand-orange); font-size: 1.2rem; font-weight: 550;">$45.00</p>
           <a href="#" class="btn btn-secondary" style="width: 100%; margin-top: auto; height: 40px; font-size: 0.8rem;">Add to Cart</a>
         </div>
         <div class="glass-card" style="text-align: center;">
-          <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?q=80&w=600&auto=format&fit=crop" alt="Performance Hoodie" style="aspect-ratio: 1/1; object-fit: cover; border-radius: 8px;">
+          <img src="assets/images/Performance%20Hoodie.png" alt="Performance Hoodie">
           <h3>Performance Hoodie</h3>
-          <p style="color: var(--brand-orange); font-size: 1.2rem; font-weight: bold;">$110.00</p>
+          <p style="color: var(--brand-orange); font-size: 1.2rem; font-weight: 550;">$110.00</p>
           <a href="#" class="btn btn-secondary" style="width: 100%; margin-top: auto; height: 40px; font-size: 0.8rem;">Add to Cart</a>
         </div>
       </div>
@@ -191,11 +237,14 @@
           bottom: 50px;
           width: 180px;
           height: 180px;
-          object-fit: cover;
+          object-fit: contain;
           border-radius: 12px;
           transform: translateZ(30px);
           filter: drop-shadow(0 15px 15px rgba(0,0,0,0.8));
           transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .remove-bg {
+          filter: url(#remove-white) drop-shadow(0 15px 15px rgba(0,0,0,0.8));
         }
         .pedestal-item:hover .pedestal-img {
           transform: translateZ(100px) translateY(-20px) rotateY(15deg);
@@ -210,15 +259,30 @@
           pointer-events: none;
         }
         .pedestal-item:hover .pedestal-info { opacity: 1; }
-        .pedestal-info h3 { color: #fff; margin: 0 0 5px; font-size: 1.1rem; }
-        .pedestal-info p { color: var(--brand-orange); margin: 0; font-weight: bold; }
+        .pedestal-info h3 { color: var(--text-primary); margin: 0 0 5px; font-size: 1.1rem; }
+        .pedestal-info p { color: var(--brand-orange); margin: 0; font-weight: 550; }
         @media (max-width: 768px) { .pedestal-grid { grid-template-columns: 1fr; gap: 4rem; } }
       </style>
+
+      <svg width="0" height="0" style="position: absolute; pointer-events: none;">
+        <filter id="remove-white" color-interpolation-filters="sRGB">
+          <feColorMatrix type="matrix" values="
+            1 0 0 0 0
+            0 1 0 0 0
+            0 0 1 0 0
+            0.3333 0.3333 0.3333 0 0
+          "/>
+          <feComponentTransfer>
+            <!-- 20 steps. 0.0 to 0.85 is opaque (1). 0.85 to 1.0 is transparent (0). -->
+            <feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0"/>
+          </feComponentTransfer>
+        </filter>
+      </svg>
 
       <div class="pedestal-grid">
         <div class="pedestal-item">
           <div class="pedestal-base"></div>
-          <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=400&auto=format&fit=crop" class="pedestal-img" alt="Cap">
+          <img src="assets/images/Official%20Team%20Cap.png" class="pedestal-img remove-bg" alt="Official Team Cap">
           <div class="pedestal-info">
             <h3>Official Team Cap</h3>
             <p>$35.00</p>
@@ -226,7 +290,7 @@
         </div>
         <div class="pedestal-item">
           <div class="pedestal-base"></div>
-          <img src="https://images.unsplash.com/photo-1559416523-140ddc3d238c?q=80&w=400&auto=format&fit=crop" class="pedestal-img" alt="Backpack">
+          <img src="assets/images/Paddock%20Backpack.png" class="pedestal-img remove-bg" alt="Paddock Backpack">
           <div class="pedestal-info">
             <h3>Paddock Backpack</h3>
             <p>$120.00</p>
@@ -234,7 +298,7 @@
         </div>
         <div class="pedestal-item">
           <div class="pedestal-base"></div>
-          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=400&auto=format&fit=crop" class="pedestal-img" alt="Watch">
+          <img src="assets/images/Chronograph%20Watch.png" class="pedestal-img remove-bg" alt="Chronograph Watch">
           <div class="pedestal-info">
             <h3>Chronograph Watch</h3>
             <p>$350.00</p>
@@ -275,16 +339,23 @@
           padding: 1rem;
           cursor: pointer;
           box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+          overflow: hidden;
         }
         .cover-item img {
-          width: 100%;
+          width: calc(100% + 2rem);
+          max-width: none;
           height: 150px;
           object-fit: cover;
-          border-radius: 8px;
+          object-position: center;
+          border-radius: 0;
+          margin-top: -1rem;
+          margin-left: -1rem;
+          margin-right: -1rem;
           margin-bottom: 1rem;
+          border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         .cover-item h3 { font-size: 1rem; text-align: center; margin-bottom: 5px; }
-        .cover-item p { color: var(--brand-orange); font-weight: bold; margin: 0; }
+        .cover-item p { color: var(--brand-orange); font-weight: 550; margin: 0; }
         
         .cover-item:nth-child(1) { transform: translateX(-180px) translateZ(-100px) rotateY(30deg); opacity: 0.6; z-index: 1; }
         .cover-item:nth-child(2) { transform: translateX(0) translateZ(50px); opacity: 1; z-index: 3; border-color: var(--brand-orange); box-shadow: 0 15px 40px rgba(255,69,0,0.2); }
@@ -299,17 +370,17 @@
 
       <div class="cover-flow">
         <div class="cover-item">
-          <img src="https://images.unsplash.com/photo-1629844837424-d2e3077759a2?q=80&w=400&auto=format&fit=crop" alt="Model">
+          <img src="assets/images/Scale%20Model.png" alt="1:18 Scale Model">
           <h3>1:18 Scale Model</h3>
           <p>$195.00</p>
         </div>
         <div class="cover-item">
-          <img src="https://images.unsplash.com/photo-1542385151-efd9000785a0?q=80&w=400&auto=format&fit=crop" alt="Helmet">
+          <img src="assets/images/Mini%20Helmet%20-%20Mercer.png" alt="Mini Helmet - Mercer">
           <h3>Mini Helmet - Mercer</h3>
           <p>$85.00</p>
         </div>
         <div class="cover-item">
-          <img src="https://images.unsplash.com/photo-1533158307587-828f0a76cf46?q=80&w=400&auto=format&fit=crop" alt="Print">
+          <img src="assets/images/Championship%20Art.png" alt="Championship Art">
           <h3>Championship Art</h3>
           <p>$55.00</p>
         </div>
@@ -317,47 +388,11 @@
     </div>
   </section>
 
-  <!-- 5. Featured Products -->
-  <section class="reveal" style="background: var(--bg-secondary);">
-    <div class="container">
-      <h2 style="text-align: center; margin-bottom: 1rem;">Trending Now</h2>
-      <p style="text-align: center; max-width: 600px; margin: 0 auto;">Our most popular items this race weekend.</p>
-      
-      <div class="grid-4">
-        <div class="glass-card" style="text-align: center;">
-          <img src="https://images.unsplash.com/photo-1541443131876-44b0322278fd?q=80&w=600&auto=format&fit=crop" alt="Trending 1" style="aspect-ratio: 1/1; object-fit: cover; border-radius: 8px;">
-          <h3>Special Edition Cap</h3>
-          <p style="color: var(--brand-orange); font-size: 1.2rem; font-weight: bold;">$45.00</p>
-          <a href="#" class="btn btn-primary" style="width: 100%; margin-top: auto; height: 40px; font-size: 0.8rem;">Add to Cart</a>
-        </div>
-        <div class="glass-card" style="text-align: center;">
-          <img src="https://images.unsplash.com/photo-1533618485292-1fb4284b7a13?q=80&w=600&auto=format&fit=crop" alt="Trending 2" style="aspect-ratio: 1/1; object-fit: cover; border-radius: 8px;">
-          <h3>Rain Jacket</h3>
-          <p style="color: var(--brand-orange); font-size: 1.2rem; font-weight: bold;">$190.00</p>
-          <a href="#" class="btn btn-primary" style="width: 100%; margin-top: auto; height: 40px; font-size: 0.8rem;">Add to Cart</a>
-        </div>
-        <div class="glass-card" style="text-align: center;">
-          <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=600&auto=format&fit=crop" alt="Trending 3" style="aspect-ratio: 1/1; object-fit: cover; border-radius: 8px;">
-          <h3>Travel Mug</h3>
-          <p style="color: var(--brand-orange); font-size: 1.2rem; font-weight: bold;">$30.00</p>
-          <a href="#" class="btn btn-primary" style="width: 100%; margin-top: auto; height: 40px; font-size: 0.8rem;">Add to Cart</a>
-        </div>
-        <div class="glass-card" style="text-align: center;">
-          <img src="https://images.unsplash.com/photo-1518118014377-ce921b660a5e?q=80&w=600&auto=format&fit=crop" alt="Trending 4" style="aspect-ratio: 1/1; object-fit: cover; border-radius: 8px;">
-          <h3>Team Umbrella</h3>
-          <p style="color: var(--brand-orange); font-size: 1.2rem; font-weight: bold;">$50.00</p>
-          <a href="#" class="btn btn-primary" style="width: 100%; margin-top: auto; height: 40px; font-size: 0.8rem;">Add to Cart</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- 6. Shop Now CTA -->
-  <section class="reveal neon-border-top" style="background: url('https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?q=80&w=2000&auto=format&fit=crop') center/cover; position: relative;">
-    <div style="position: absolute; top:0; left:0; width:100%; height:100%; background:rgba(10,10,10,0.85);"></div>
+  <section class="reveal neon-border-top" style="background: var(--bg-secondary); position: relative;">
     <div class="container" style="position: relative; z-index: 2; text-align: center;">
       <h2>Join The Paddock Club</h2>
-      <p style="max-width: 600px; margin: 0 auto 2rem; color: #ccc;">Register an account to receive 15% off your first merchandise order and get early access to limited edition drops.</p>
+      <p style="max-width: 600px; margin: 0 auto 2rem; color: var(--text-secondary);">Register an account to receive 15% off your first merchandise order and get early access to limited edition drops.</p>
       <a href="register.html" class="btn btn-primary">Sign Up & Save</a>
     </div>
   </section>
@@ -374,10 +409,18 @@
           </h4>
           <p style="font-size: 0.9rem; color: var(--text-secondary);">Pushing the boundaries of motorsport engineering and elite performance. Join our championship journey.</p>
           <div class="social-icons">
-            <a href="#" class="social-icon" aria-label="Facebook">FB</a>
-            <a href="#" class="social-icon" aria-label="Twitter">X</a>
-            <a href="#" class="social-icon" aria-label="Instagram">IG</a>
-            <a href="#" class="social-icon" aria-label="YouTube">YT</a>
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6c1.05 0 2.15.19 2.15.19V8.5h-1.21c-1.19 0-1.56.74-1.56 1.5V12h2.73l-.44 3h-2.29v6.8C18.56 20.87 22 16.84 22 12z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Twitter">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="YouTube">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.55 9.376.55 9.376.55s7.505 0 9.377-.55a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
           </div>
         </div>
         <div class="footer-col">
