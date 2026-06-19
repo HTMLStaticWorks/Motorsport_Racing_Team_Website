@@ -1,6 +1,10 @@
 import os
-from PIL import Image
-
+try:
+    from PIL import Image
+except ImportError:
+    print("Error: The 'Pillow' library is not installed. Please run 'pip install Pillow' to use this script.")
+    import sys
+    sys.exit(1)
 def process_image(filename):
     if not filename.endswith('.png') or 'icon_' not in filename: return
     try:
